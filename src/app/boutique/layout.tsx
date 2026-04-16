@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Boutique | Manel.k – La maison des voiles",
+  title: "Boutique",
   description:
-    "Parcourez notre collection de bouquets de voiles faits main. Des creations uniques et elegantes, pretes a offrir ou a personnaliser.",
+    "Decouvrez notre collection de bouquets de voiles faits main : 3, 4 ou 5 voiles. Creations uniques, personnalisables et livrees en France.",
+  openGraph: {
+    title: "Boutique | Manel.k – La maison des voiles",
+    description:
+      "Bouquets de voiles faits main de 3 a 5 voiles. Choisissez votre bouquet et personnalisez-le.",
+  },
+  alternates: {
+    canonical: "https://lamaisondesvoiles.fr/boutique",
+  },
 };
 
 export default function BoutiqueLayout({

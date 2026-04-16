@@ -149,8 +149,34 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    name: "Manel.k - La maison des voiles",
+    description: "Bouquets de voiles faits main et personnalisables. Cadeau unique et plein d'emotion.",
+    url: "https://lamaisondesvoiles.fr",
+    image: "https://lamaisondesvoiles.fr/opengraph-image.jpg",
+    priceRange: "5€ - 50€",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "FR",
+    },
+    sameAs: ["https://www.instagram.com/manel.k_95"],
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "EUR",
+      lowPrice: "5",
+      highPrice: "50",
+      offerCount: "4",
+    },
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ───────────────── Hero ───────────────── */}
       <section
         className="relative w-full overflow-hidden"

@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Personnaliser | Manel.k – La maison des voiles",
+  title: "Personnaliser votre bouquet",
   description:
-    "Personnalisez votre bouquet de voiles : choisissez le nombre de voiles, les couleurs et les supplements pour creer un cadeau unique et fait main.",
+    "Creez votre bouquet de voiles sur mesure : nombre de voiles, couleurs, supplements et message cadeau. Livraison en France ou retrait sur place.",
+  openGraph: {
+    title: "Personnaliser | Manel.k – La maison des voiles",
+    description:
+      "Creez votre bouquet de voiles personnalise en quelques etapes.",
+  },
+  alternates: {
+    canonical: "https://lamaisondesvoiles.fr/personnaliser",
+  },
 };
 
 export default function PersonnaliserLayout({
