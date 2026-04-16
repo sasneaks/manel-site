@@ -131,16 +131,80 @@ export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY;
     const manelEmail = process.env.MANEL_EMAIL || "manel@example.com";
 
+    // ── Build customer confirmation email ──
+    const customerHtml = `
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /></head>
+<body style="margin:0;padding:0;background:#F9F3F6;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9F3F6;padding:40px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;font-family:'Helvetica Neue',Arial,sans-serif;">
+
+        <!-- Header -->
+        <tr><td style="background:#CFA4B8;border-radius:16px 16px 0 0;padding:36px 40px;text-align:center;">
+          <h1 style="margin:0;color:#fff;font-size:24px;font-weight:700;">La maison des voiles</h1>
+          <p style="margin:6px 0 0;color:rgba(255,255,255,0.85);font-size:14px;font-style:italic;">par Manel.k</p>
+        </td></tr>
+
+        <!-- Thank you -->
+        <tr><td style="background:#fff;padding:36px 40px 20px;text-align:center;">
+          <h2 style="margin:0 0 8px;color:#1A1A1A;font-size:22px;">Merci pour votre message, ${eName} !</h2>
+          <p style="margin:0;color:#888;font-size:15px;">Nous avons bien recu votre demande.</p>
+        </td></tr>
+
+        <!-- Recap -->
+        <tr><td style="background:#fff;padding:0 40px 28px;">
+          <div style="background:#FDF8FA;border-radius:12px;padding:20px;">
+            <p style="margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#B8A0AC;font-weight:600;">Votre message</p>
+            <p style="margin:8px 0 0;color:#555;font-size:14px;line-height:1.7;white-space:pre-wrap;">${eMessage}</p>
+          </div>
+        </td></tr>
+
+        <!-- Next steps -->
+        <tr><td style="background:#fff;padding:0 40px 32px;text-align:center;">
+          <div style="background:#E8F5E9;border-radius:12px;padding:20px;">
+            <p style="margin:0 0 8px;font-size:16px;">✓</p>
+            <p style="margin:0;color:#2E7D32;font-size:15px;font-weight:600;">Nous vous recontacterons tres rapidement !</p>
+            <p style="margin:8px 0 0;color:#555;font-size:13px;">Manel reviendra vers vous dans les plus brefs delais, generalement sous 24h.</p>
+          </div>
+        </td></tr>
+
+        <!-- Instagram -->
+        <tr><td style="background:#fff;padding:0 40px 28px;text-align:center;">
+          <p style="margin:0 0 12px;font-size:14px;color:#888;">Vous pouvez aussi nous joindre sur Instagram</p>
+          <a href="https://www.instagram.com/manel.k_95" style="display:inline-block;background:#CFA4B8;color:#fff;text-decoration:none;padding:10px 24px;border-radius:24px;font-size:14px;font-weight:600;">@manel.k_95</a>
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td style="background:#FAF5F7;border-radius:0 0 16px 16px;padding:20px 40px;text-align:center;">
+          <p style="margin:0;font-size:12px;color:#B8A0AC;">La maison des voiles — par Manel.k</p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
     if (apiKey && apiKey !== "your_resend_api_key_here") {
       const resend = new Resend(apiKey);
 
-      await resend.emails.send({
-        from: "La maison des voiles <contact@lamaisondesvoiles.fr>",
-        to: manelEmail,
-        replyTo: email,
-        subject: `Nouveau message de ${name}`,
-        html,
-      });
+      await Promise.all([
+        resend.emails.send({
+          from: "La maison des voiles <contact@lamaisondesvoiles.fr>",
+          to: manelEmail,
+          replyTo: email,
+          subject: `Nouveau message de ${name}`,
+          html,
+        }),
+        resend.emails.send({
+          from: "La maison des voiles <contact@lamaisondesvoiles.fr>",
+          to: email,
+          subject: `Merci pour votre message — La maison des voiles`,
+          html: customerHtml,
+        }),
+      ]);
     } else {
       console.log("──────────────────────────────────────────");
       console.log("[DEV] Contact message received");
