@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import BouquetPreview from "@/components/BouquetPreview";
 
@@ -58,6 +58,14 @@ const TOTAL_STEPS = 7;
 /* ──────────────────────── Page ────────────────────────── */
 
 export default function PersonnaliserPage() {
+  return (
+    <Suspense>
+      <PersonnaliserContent />
+    </Suspense>
+  );
+}
+
+function PersonnaliserContent() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
   const [veilCount, setVeilCount] = useState<number>(0);
