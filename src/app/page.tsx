@@ -49,28 +49,28 @@ const whyCards = [
 
 const bouquets = [
   {
-    title: "Bouquet 1 voile",
-    price: "8",
-    description: "Simple et delicat, un geste plein de douceur.",
-    image: "/images/bouquet-beige.jpg",
-  },
-  {
     title: "Bouquet 3 voiles",
     price: "12",
     description: "Un trio elegant pour un cadeau delicat et raffine.",
-    image: "/images/bouquet3.jpg",
+    image: "/images/bouquet-beige.jpg",
   },
   {
     title: "Bouquet 4 voiles",
     price: "15",
     description: "L'equilibre parfait entre douceur et generosite.",
-    image: "/images/bouquet5.jpg",
+    image: "/images/bouquet9.jpg",
   },
   {
     title: "Bouquet 5 voiles",
     price: "18",
     description: "Un bouquet genereux pour marquer les grandes occasions.",
     image: "/images/bouquet7.jpg",
+  },
+  {
+    title: "Bouquet 5 voiles",
+    price: "18",
+    description: "Tons bleus avec gysophiles, un classique intemporel.",
+    image: "/images/bouquet5.jpg",
   },
 ];
 
