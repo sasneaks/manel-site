@@ -1,8 +1,11 @@
 "use client";
 
-import { useState, useCallback, useEffect, Suspense } from "react";
+import { useState, useCallback, useEffect, Suspense, useRef } from "react";
 import { useSearchParams } from "next/navigation";
+import { Turnstile } from "@marsidev/react-turnstile";
 import BouquetPreview from "@/components/BouquetPreview";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
 
 /* ───────────────────────── Types ───────────────────────── */
 
@@ -83,6 +86,9 @@ function PersonnaliserContent() {
   const [deliveryChoice, setDeliveryChoice] = useState<string>("");
   const [postalCode, setPostalCode] = useState("");
   const [paymentChoice, setPaymentChoice] = useState<"acompte" | "total" | "">("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const turnstileRef = useRef<any>(null);
   const [submitting, setSubmitting] = useState(false);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -205,6 +211,7 @@ function PersonnaliserContent() {
       shippingPrice,
       postalCode: postalCode.trim(),
       paymentChoice,
+      turnstileToken,
     };
 
     try {
@@ -624,7 +631,15 @@ function PersonnaliserContent() {
                       </div>
                     </>
                   )}
-                  <div className="mt-6 flex items-center gap-2 text-xs text-[#1A1A1A]/40">
+                  <div className="mt-6">
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={TURNSTILE_SITE_KEY}
+                      onSuccess={setTurnstileToken}
+                      options={{ theme: "light", size: "normal" }}
+                    />
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 text-xs text-[#1A1A1A]/40">
                     <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                     </svg>
@@ -657,7 +672,7 @@ function PersonnaliserContent() {
                 ) : (
                   <button
                     onClick={handleSubmit}
-                    disabled={!canGoNext() || submitting}
+                    disabled={!canGoNext() || submitting || !turnstileToken}
                     className="px-6 py-2.5 rounded-full bg-[#CFA4B8] text-white text-sm font-medium hover:bg-[#CFA4B8]/90 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-2 cursor-pointer"
                   >
                     {submitting && (

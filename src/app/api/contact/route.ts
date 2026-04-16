@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getClientIp, checkRateLimit, validateEmail } from "@/lib/rate-limit";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 /* ─── helpers ─── */
 
@@ -28,6 +29,16 @@ export async function POST(request: Request) {
     if (rateLimitResponse) return rateLimitResponse;
 
     const body = await request.json();
+
+    // ── Turnstile verification ──
+    const turnstileToken = typeof body.turnstileToken === "string" ? body.turnstileToken : "";
+    const turnstileOk = await verifyTurnstile(turnstileToken);
+    if (!turnstileOk) {
+      return NextResponse.json(
+        { success: false, error: "Vérification anti-bot échouée. Veuillez réessayer." },
+        { status: 403 }
+      );
+    }
 
     // ── Sanitize inputs ──
     const name = sanitize(body.name, 100);

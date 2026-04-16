@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import { Turnstile } from "@marsidev/react-turnstile";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -13,6 +16,9 @@ export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const turnstileRef = useRef<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,16 +27,20 @@ export default function ContactPage() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, turnstileToken }),
       });
       if (res.ok) {
         setStatus("sent");
         setForm({ name: "", email: "", instagram: "", message: "" });
+        setTurnstileToken("");
+        turnstileRef.current?.reset();
       } else {
         setStatus("error");
+        turnstileRef.current?.reset();
       }
     } catch {
       setStatus("error");
+      turnstileRef.current?.reset();
     }
   };
 
@@ -179,9 +189,18 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  <div className="flex justify-center">
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={TURNSTILE_SITE_KEY}
+                      onSuccess={setTurnstileToken}
+                      options={{ theme: "light", size: "normal" }}
+                    />
+                  </div>
+
                   <button
                     type="submit"
-                    disabled={status === "sending"}
+                    disabled={status === "sending" || !turnstileToken}
                     className="w-full bg-[#CFA4B8] hover:bg-[#b8899e] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-xl transition-all duration-200 shadow-md shadow-[#CFA4B8]/20 hover:shadow-lg hover:shadow-[#CFA4B8]/25"
                   >
                     {status === "sending" ? (
