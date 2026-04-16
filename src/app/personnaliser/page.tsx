@@ -81,6 +81,7 @@ function PersonnaliserContent() {
   const [billetsAmount, setBilletsAmount] = useState("");
 
   const [deliveryChoice, setDeliveryChoice] = useState<string>("");
+  const [postalCode, setPostalCode] = useState("");
   const [paymentChoice, setPaymentChoice] = useState<"acompte" | "total" | "">("");
   const [submitting, setSubmitting] = useState(false);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
@@ -163,7 +164,11 @@ function PersonnaliserContent() {
         phone.trim() !== "" &&
         address.trim() !== ""
       );
-    if (step === 6) return deliveryChoice !== "";
+    if (step === 6) {
+      if (deliveryChoice === "") return false;
+      if (deliveryChoice === "mondialrelay" && postalCode.trim().length < 5) return false;
+      return true;
+    }
     if (step === 7) return paymentChoice !== "";
     return false;
   };
@@ -198,6 +203,7 @@ function PersonnaliserContent() {
       extraMessage: extraMessage.trim(),
       deliveryChoice,
       shippingPrice,
+      postalCode: postalCode.trim(),
       paymentChoice,
     };
 
@@ -541,6 +547,22 @@ function PersonnaliserContent() {
                       </button>
                     ))}
                   </div>
+                  {deliveryChoice === "mondialrelay" && (
+                    <div className="mt-5 p-4 bg-[#F6E8EF]/50 rounded-xl">
+                      <label className="block text-sm font-medium mb-1.5 text-[#1A1A1A]/70">
+                        Code postal du destinataire <span className="text-[#CFA4B8]">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={postalCode}
+                        onChange={(e) => setPostalCode(e.target.value.replace(/\D/g, "").slice(0, 5))}
+                        placeholder="Ex: 75001"
+                        maxLength={5}
+                        className="w-full rounded-xl border border-[#1A1A1A]/15 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#CFA4B8] transition"
+                      />
+                      <p className="text-xs text-[#1A1A1A]/40 mt-2">Manel trouvera le point relais le plus proche pour vous.</p>
+                    </div>
+                  )}
                 </StepWrapper>
               )}
 

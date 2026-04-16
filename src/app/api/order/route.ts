@@ -52,6 +52,7 @@ export async function POST(request: Request) {
     const extraMessage = sanitize(body.extraMessage, 2000);
     const deliveryChoice = sanitize(body.deliveryChoice, 30);
     const shippingPrice = typeof body.shippingPrice === "number" ? body.shippingPrice : 0;
+    const postalCode = sanitize(body.postalCode, 5);
     const paymentChoice = sanitize(body.paymentChoice, 20);
 
     const DELIVERY_LABELS: Record<string, string> = {
@@ -234,6 +235,18 @@ export async function POST(request: Request) {
             </tr>
           </table>
         </td></tr>
+
+        ${deliveryChoice === "mondialrelay" && postalCode ? `
+        <!-- Mondial Relay action -->
+        <tr><td style="background:#fff;padding:0 40px 28px;">
+          <div style="background:#E3F2FD;border-radius:12px;padding:20px 24px;text-align:center;">
+            <p style="margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#1565C0;font-weight:600;">📦 Mondial Relay — Code postal : ${escapeHtml(postalCode)}</p>
+            <p style="margin:8px 0 16px;font-size:14px;color:#555;">Trouvez un point relais proche du client et créez l'envoi :</p>
+            <a href="https://www.mondialrelay.fr/trouver-le-point-relais-le-plus-proche-de-chez-moi/?codePays=FR&codePostal=${escapeHtml(postalCode)}" style="display:inline-block;background:#1565C0;color:#fff;text-decoration:none;padding:12px 24px;border-radius:24px;font-size:14px;font-weight:600;margin:0 4px;">Trouver un relais</a>
+            <a href="https://www.mondialrelay.fr/envoi-de-colis/" style="display:inline-block;background:#2E7D32;color:#fff;text-decoration:none;padding:12px 24px;border-radius:24px;font-size:14px;font-weight:600;margin:0 4px;">Créer l'envoi</a>
+          </div>
+        </td></tr>
+        ` : ""}
 
         <!-- Footer -->
         <tr><td style="background:#FAF5F7;border-radius:0 0 16px 16px;padding:20px 40px;text-align:center;">
