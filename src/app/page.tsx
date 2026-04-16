@@ -1,65 +1,441 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+
+/* ──────────────────────────────────────────────
+   Data
+   ────────────────────────────────────────────── */
+
+const whyCards = [
+  {
+    title: "Cadeau original",
+    description: "Un present unique qui surprend et emerveille a chaque fois.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 009.375 7.5H12m0-2.625A2.625 2.625 0 0114.625 7.5H12m0-2.625V7.5m0 0H3.375a1.125 1.125 0 00-1.125 1.125v2.25a1.125 1.125 0 001.125 1.125H12m0-4.5h8.625a1.125 1.125 0 011.125 1.125v2.25a1.125 1.125 0 01-1.125 1.125H12" />
+      </svg>
+    ),
+  },
+  {
+    title: "Personnalisable",
+    description: "Choisissez les couleurs qui correspondent a vos envies.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+      </svg>
+    ),
+  },
+  {
+    title: "Fait main avec soin",
+    description: "Chaque bouquet est confectionne a la main avec amour.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Ideal pour surprendre",
+    description: "Parfait pour les anniversaires, mariages et moments speciaux.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      </svg>
+    ),
+  },
+];
+
+const bouquets = [
+  {
+    title: "Bouquet 1 voile",
+    price: "8",
+    description: "Simple et delicat, un geste plein de douceur.",
+    image: "/images/bouquet-beige.jpg",
+  },
+  {
+    title: "Bouquet 3 voiles",
+    price: "12",
+    description: "Un trio elegant pour un cadeau delicat et raffine.",
+    image: "/images/bouquet3.jpg",
+  },
+  {
+    title: "Bouquet 4 voiles",
+    price: "15",
+    description: "L'equilibre parfait entre douceur et generosite.",
+    image: "/images/bouquet5.jpg",
+  },
+  {
+    title: "Bouquet 5 voiles",
+    price: "18",
+    description: "Un bouquet genereux pour marquer les grandes occasions.",
+    image: "/images/bouquet7.jpg",
+  },
+];
+
+const galleryImages = [
+  { src: "/images/bouquet2.jpg", alt: "Creation bouquet de voiles 1" },
+  { src: "/images/bouquet5.jpg", alt: "Creation bouquet de voiles 2" },
+  { src: "/images/bouquet7.jpg", alt: "Creation bouquet de voiles 3" },
+  { src: "/images/bouquet8.jpg", alt: "Creation bouquet de voiles 4" },
+  { src: "/images/bouquet9.jpg", alt: "Creation bouquet de voiles 5" },
+  { src: "/images/bouquet-bleu.jpg", alt: "Creation bouquet de voiles 6" },
+];
+
+const steps = [
+  { number: "1", title: "Choisissez votre bouquet", description: "Selectionnez le nombre de voiles souhaite." },
+  { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette parmi nos teintes elegantes." },
+  { number: "3", title: "Recevez votre bouquet", description: "Livre avec soin, pret a offrir." },
+];
+
+const testimonials = [
+  {
+    name: "Amina R.",
+    text: "J'ai offert un bouquet de 5 voiles a ma soeur pour son anniversaire. Elle etait tellement emue ! Les couleurs etaient exactement comme je les avais choisies. Merci Manel !",
+    stars: 5,
+  },
+  {
+    name: "Fatima B.",
+    text: "Un cadeau original et raffine. La qualite des voiles est superbe et la presentation en bouquet est magnifique. Je recommande les yeux fermes.",
+    stars: 5,
+  },
+  {
+    name: "Nour S.",
+    text: "Commande livree rapidement et soigneusement emballee. Le bouquet de 4 voiles etait parfait pour un cadeau de mariage. Tout le monde a adore !",
+    stars: 5,
+  },
+];
+
+/* ──────────────────────────────────────────────
+   Star SVG component
+   ────────────────────────────────────────────── */
+
+function StarIcon({ filled }: { filled: boolean }) {
+  return (
+    <svg
+      className="w-5 h-5"
+      viewBox="0 0 20 20"
+      fill={filled ? "#CFA4B8" : "none"}
+      stroke="#CFA4B8"
+      strokeWidth={1.5}
+    >
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   Page component
+   ────────────────────────────────────────────── */
 
 export default function Home() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".scroll-reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="flex flex-col min-h-screen">
+      {/* ───────────────── Hero ───────────────── */}
+      <section
+        className="relative w-full overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #F6E8EF 0%, #ffffff 100%)" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 py-24 md:py-36 flex flex-col-reverse md:flex-row items-center gap-14">
+          {/* Text */}
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#CFA4B8] font-medium mb-4">
+              Manel.k
+            </p>
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-[#1A1A1A]"
+                          >
+              La maison
+              <br />
+              des voiles
+            </h1>
+            <p className="mt-6 text-lg sm:text-xl text-[#1A1A1A]/70 max-w-lg mx-auto md:mx-0 leading-relaxed">
+              Des bouquets de voiles faits main pour offrir un cadeau unique et plein d&apos;emotion.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <Link
+                href="/personnaliser"
+                className="inline-flex items-center justify-center rounded-full bg-[#CFA4B8] px-8 py-3.5 text-white font-medium text-base shadow-lg hover:bg-[#b8899e] hover:shadow-xl transition-all duration-300"
+              >
+                Creer mon bouquet
+              </Link>
+              <Link
+                href="#bouquets"
+                className="inline-flex items-center justify-center rounded-full border-2 border-[#CFA4B8] px-8 py-3.5 text-[#CFA4B8] font-medium text-base hover:bg-[#CFA4B8] hover:text-white transition-all duration-300"
+              >
+                Voir la boutique
+              </Link>
+            </div>
+          </div>
+
+          {/* Hero image */}
+          <div className="flex-1 w-full max-w-md md:max-w-lg relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/images/WhatsApp Image 2026-03-24 at 20.04.35.jpeg"
+              alt="Bouquet de voiles fait main"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+
+        {/* Decorative floating shape */}
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[#F6E8EF]/50 blur-3xl pointer-events-none" />
+        <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#EAD3DD]/30 blur-3xl pointer-events-none" />
+      </section>
+
+      {/* ───────────────── Why Section ───────────────── */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2
+            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+                      >
+            Pourquoi offrir un bouquet de voiles&nbsp;?
+          </h2>
+          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+            Un cadeau fait main qui allie elegance, douceur et originalite.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyCards.map((card, i) => (
+              <div
+                key={card.title}
+                className={`scroll-reveal delay-${i + 1} group flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-sm border border-[#F6E8EF] hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
+              >
+                <div className="mb-5 w-14 h-14 rounded-2xl bg-[#F6E8EF] flex items-center justify-center text-[#CFA4B8] group-hover:bg-[#CFA4B8] group-hover:text-white transition-all duration-300">
+                  {card.icon}
+                </div>
+                <h3 className="font-semibold text-[#1A1A1A] text-lg mb-2">{card.title}</h3>
+                <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">{card.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── Bouquets Section ───────────────── */}
+      <section
+        id="bouquets"
+        className="py-24 md:py-32"
+        style={{ background: "linear-gradient(180deg, #ffffff 0%, #F6E8EF40 100%)" }}
+      >
+        <div className="mx-auto max-w-6xl px-6">
+          <h2
+            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+                      >
+            Choisissez votre bouquet
+          </h2>
+          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+            Du plus delicat au plus genereux, trouvez le bouquet parfait.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {bouquets.map((bouquet, i) => (
+              <div
+                key={bouquet.title}
+                className={`scroll-reveal delay-${i + 1} group bg-white rounded-2xl overflow-hidden shadow-sm border border-[#F6E8EF] hover:shadow-xl transition-all duration-300`}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <Image
+                    src={bouquet.image}
+                    alt={bouquet.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                  {/* Price badge */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-md">
+                    <span className="text-[#CFA4B8] font-bold text-lg">{bouquet.price}&euro;</span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-[#1A1A1A] text-lg mb-1">{bouquet.title}</h3>
+                  <p className="text-sm text-[#1A1A1A]/60 leading-relaxed mb-4">{bouquet.description}</p>
+                  <Link
+                    href="/personnaliser"
+                    className="inline-flex items-center justify-center w-full rounded-full bg-[#CFA4B8] px-5 py-2.5 text-white text-sm font-medium hover:bg-[#b8899e] transition-colors duration-300"
+                  >
+                    Commander
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── Gallery Section ───────────────── */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2
+            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+                      >
+            Nos creations
+          </h2>
+          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+            Chaque bouquet est unique, confectionne avec soin et amour.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galleryImages.map((img, i) => (
+              <Link
+                key={img.src}
+                href="/personnaliser"
+                className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-2xl ${
+                  i === 0 || i === 5 ? "row-span-2 aspect-[3/4]" : "aspect-square"
+                }`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/40 transition-all duration-500 flex items-center justify-center">
+                  <span className="text-white font-medium text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    Voir la boutique
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── How it Works ───────────────── */}
+      <section
+        id="comment-ca-marche"
+        className="py-24 md:py-32"
+        style={{ background: "linear-gradient(180deg, #ffffff 0%, #F6E8EF 100%)" }}
+      >
+        <div className="mx-auto max-w-5xl px-6">
+          <h2
+            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+                      >
+            Comment ca marche
+          </h2>
+          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-20">
+            En trois etapes simples, recevez votre bouquet personnalise.
+          </p>
+          <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-14 md:gap-0">
+            {/* Connecting line (desktop only) */}
+            <div className="hidden md:block absolute top-8 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-0.5 bg-[#EAD3DD]" />
+
+            {steps.map((step, i) => (
+              <div
+                key={step.number}
+                className={`scroll-reveal delay-${i + 1} flex-1 flex flex-col items-center text-center relative z-10`}
+              >
+                {/* Number circle */}
+                <div className="w-16 h-16 rounded-full bg-[#CFA4B8] text-white flex items-center justify-center text-2xl font-bold shadow-lg mb-6 ring-4 ring-white">
+                  {step.number}
+                </div>
+                <h3 className="font-semibold text-[#1A1A1A] text-lg mb-2">{step.title}</h3>
+                <p className="text-sm text-[#1A1A1A]/60 max-w-[220px] leading-relaxed">{step.description}</p>
+
+                {/* Arrow between steps (mobile) */}
+                {i < steps.length - 1 && (
+                  <svg
+                    className="md:hidden mt-8 text-[#EAD3DD]"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 5v14M5 12l7 7 7-7" />
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── Testimonials ───────────────── */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2
+            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+                      >
+            Ce que disent nos clientes
+          </h2>
+          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+            Elles ont offert nos bouquets et elles en parlent.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <div
+                key={t.name}
+                className={`scroll-reveal delay-${i + 1} bg-[#F6E8EF]/40 rounded-2xl p-8 border border-[#EAD3DD]/50`}
+              >
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: 5 }).map((_, si) => (
+                    <StarIcon key={si} filled={si < t.stars} />
+                  ))}
+                </div>
+                {/* Quote icon */}
+                <svg className="w-8 h-8 text-[#CFA4B8]/30 mb-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z" />
+                </svg>
+                <p className="text-[#1A1A1A]/70 leading-relaxed mb-6 text-sm">
+                  {t.text}
+                </p>
+                <p className="font-semibold text-[#1A1A1A] text-sm">{t.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── CTA Section ───────────────── */}
+      <section className="py-24 md:py-32 bg-[#F6E8EF]">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2
+            className="scroll-reveal text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-5"
+                      >
+            Creez votre bouquet sur mesure
+          </h2>
+          <p className="scroll-reveal text-lg text-[#1A1A1A]/70 mb-10 max-w-xl mx-auto leading-relaxed">
+            Personnalisez les couleurs et offrez un cadeau unique
+          </p>
+          <div className="scroll-reveal">
+            <Link
+              href="/personnaliser"
+              className="inline-flex items-center justify-center rounded-full bg-[#1A1A1A] px-10 py-4 text-white font-medium text-base shadow-lg hover:bg-[#333] hover:shadow-xl transition-all duration-300"
+            >
+              Personnaliser mon bouquet
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
