@@ -395,26 +395,22 @@ export default function Home() {
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
             Elles ont offert nos bouquets et elles en parlent.
           </p>
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="grid grid-cols-3 gap-2 md:gap-8">
             {testimonials.map((t, i) => (
               <div
                 key={t.name}
-                className={`scroll-reveal delay-${i + 1} bg-[#F6E8EF]/40 rounded-2xl p-5 md:p-8 border border-[#EAD3DD]/50 min-w-[260px] md:min-w-0 snap-center shrink-0 md:shrink`}
+                className={`scroll-reveal delay-${i + 1} bg-[#F6E8EF]/40 rounded-xl md:rounded-2xl p-3 md:p-8 border border-[#EAD3DD]/50`}
               >
                 {/* Stars */}
-                <div className="flex gap-0.5 md:gap-1 mb-3 md:mb-4">
+                <div className="flex gap-0.5 mb-2 md:mb-4">
                   {Array.from({ length: 5 }).map((_, si) => (
                     <StarIcon key={si} filled={si < t.stars} />
                   ))}
                 </div>
-                {/* Quote icon */}
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-[#CFA4B8]/30 mb-2 md:mb-3" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z" />
-                </svg>
-                <p className="text-[#1A1A1A]/70 leading-relaxed mb-4 md:mb-6 text-xs md:text-sm">
+                <p className="text-[#1A1A1A]/70 leading-snug md:leading-relaxed mb-2 md:mb-6 text-[10px] md:text-sm line-clamp-5 md:line-clamp-none">
                   {t.text}
                 </p>
-                <p className="font-semibold text-[#1A1A1A] text-xs md:text-sm">{t.name}</p>
+                <p className="font-semibold text-[#1A1A1A] text-[10px] md:text-sm">{t.name}</p>
               </div>
             ))}
           </div>
