@@ -68,6 +68,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://lamaisondesvoiles.fr",
   },
+  icons: {
+    icon: "/icon.png?v=2",
+    apple: "/apple-icon.png?v=2",
+  },
 };
 
 export default function RootLayout({
