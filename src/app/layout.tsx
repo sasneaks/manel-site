@@ -17,9 +17,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lamaisondesvoiles.fr"),
   title: "Manel.k \u2013 La maison des voiles",
   description:
     "Des bouquets de voiles faits main pour offrir un cadeau unique et plein d\u2019\u00e9motion.",
+  openGraph: {
+    title: "Manel.k \u2013 La maison des voiles",
+    description:
+      "Des bouquets de voiles faits main pour offrir un cadeau unique et plein d\u2019\u00e9motion.",
+    siteName: "La Maison des Voiles",
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manel.k \u2013 La maison des voiles",
+    description:
+      "Des bouquets de voiles faits main pour offrir un cadeau unique et plein d\u2019\u00e9motion.",
+  },
 };
 
 export default function RootLayout({
