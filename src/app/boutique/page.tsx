@@ -182,7 +182,7 @@ export default function BoutiquePage() {
                   {product.description}
                 </p>
                 <Link
-                  href="/personnaliser"
+                  href={`/personnaliser?voiles=${product.voiles}`}
                   className="group/btn relative block w-full text-center bg-[#CFA4B8] hover:bg-[#b8899e] text-white text-sm font-medium py-2.5 rounded-xl transition-all duration-200 overflow-hidden"
                 >
                   <span className="relative z-10">Commander</span>

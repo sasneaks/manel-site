@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getClientIp, checkRateLimit, validateEmail } from "@/lib/rate-limit";
 
 /* ─── helpers ─── */
 
@@ -21,6 +22,11 @@ function escapeHtml(str: string): string {
 
 export async function POST(request: Request) {
   try {
+    // ── Rate limiting ──
+    const ip = getClientIp(request);
+    const rateLimitResponse = checkRateLimit(ip);
+    if (rateLimitResponse) return rateLimitResponse;
+
     const body = await request.json();
 
     // ── Sanitize inputs ──
@@ -41,6 +47,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+    const emailError = validateEmail(email);
+    if (emailError) return emailError;
     if (!message) {
       return NextResponse.json(
         { success: false, error: "Le message est requis." },
@@ -116,7 +124,7 @@ export async function POST(request: Request) {
       const resend = new Resend(apiKey);
 
       await resend.emails.send({
-        from: "La maison des voiles <onboarding@resend.dev>",
+        from: "La maison des voiles <contact@lamaisondesvoiles.fr>",
         to: manelEmail,
         replyTo: email,
         subject: `Nouveau message de ${name}`,

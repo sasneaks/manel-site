@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import BouquetPreview from "@/components/BouquetPreview";
 
 /* ───────────────────────── Types ───────────────────────── */
@@ -46,11 +47,18 @@ const SUPPLEMENTS = [
   { name: "Quatre epingles", price: 1, emoji: "\uD83D\uDCCC" },
 ] as const;
 
-const TOTAL_STEPS = 6;
+const DELIVERY_OPTIONS = [
+  { id: "surplace", label: "Retrait sur place", sublabel: "Gratuit — venez chercher votre bouquet", price: 0, emoji: "📍" },
+  { id: "mainpropre", label: "Livraison en main propre", sublabel: "Dans un rayon de 30 min — 10€", price: 10, emoji: "🚗" },
+  { id: "mondialrelay", label: "Mondial Relay", sublabel: "Livraison en point relais — France", price: 5.90, emoji: "📦" },
+] as const;
+
+const TOTAL_STEPS = 7;
 
 /* ──────────────────────── Page ────────────────────────── */
 
 export default function PersonnaliserPage() {
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
   const [veilCount, setVeilCount] = useState<number>(0);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -64,11 +72,23 @@ export default function PersonnaliserPage() {
   const [supplements, setSupplements] = useState<string[]>([]);
   const [billetsAmount, setBilletsAmount] = useState("");
 
+  const [deliveryChoice, setDeliveryChoice] = useState<string>("");
   const [paymentChoice, setPaymentChoice] = useState<"acompte" | "total" | "">("");
   const [submitting, setSubmitting] = useState(false);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeSlot, setActiveSlot] = useState<number | null>(null);
+
+  /* ── Pre-select veil count from query param ── */
+  useEffect(() => {
+    const voilesParam = searchParams.get("voiles");
+    if (voilesParam) {
+      const count = parseInt(voilesParam, 10);
+      if (VEIL_OPTIONS.some((v) => v.count === count)) {
+        setVeilCount(count);
+      }
+    }
+  }, [searchParams]);
 
   /* ── Color helpers ── */
 
@@ -117,7 +137,9 @@ export default function PersonnaliserPage() {
     return sum + (found?.price ?? 0);
   }, 0);
   const billetsTotal = supplements.includes("Billets") && billetsAmount ? parseFloat(billetsAmount) + 10 : 0;
-  const totalPrice = basePrice + suppTotal + billetsTotal;
+  const shippingPrice = DELIVERY_OPTIONS.find((d) => d.id === deliveryChoice)?.price ?? 0;
+  const subtotal = basePrice + suppTotal + billetsTotal;
+  const totalPrice = subtotal + shippingPrice;
 
   /* ── Navigation ── */
 
@@ -133,7 +155,8 @@ export default function PersonnaliserPage() {
         phone.trim() !== "" &&
         address.trim() !== ""
       );
-    if (step === 6) return paymentChoice !== "";
+    if (step === 6) return deliveryChoice !== "";
+    if (step === 7) return paymentChoice !== "";
     return false;
   };
 
@@ -165,6 +188,8 @@ export default function PersonnaliserPage() {
       address: address.trim(),
       instagram: instagram.trim(),
       extraMessage: extraMessage.trim(),
+      deliveryChoice,
+      shippingPrice,
       paymentChoice,
     };
 
@@ -247,7 +272,7 @@ export default function PersonnaliserPage() {
         {/* Progress bar */}
         <div className="mb-10">
           <div className="flex justify-between text-xs md:text-sm font-medium mb-2">
-            {["Voiles", "Couleurs", "Extras", "Message", "Infos", "Paiement"].map((label, i) => (
+            {["Voiles", "Couleurs", "Extras", "Message", "Infos", "Livraison", "Paiement"].map((label, i) => (
               <span
                 key={label}
                 className={
@@ -479,8 +504,36 @@ export default function PersonnaliserPage() {
                 </StepWrapper>
               )}
 
-              {/* STEP 6 - Payment choice */}
+              {/* STEP 6 - Delivery choice */}
               {step === 6 && (
+                <StepWrapper title="Mode de livraison">
+                  <div className="grid gap-3">
+                    {DELIVERY_OPTIONS.map((opt) => (
+                      <button
+                        key={opt.id}
+                        onClick={() => setDeliveryChoice(opt.id)}
+                        className={`flex items-center gap-4 rounded-xl border-2 px-5 py-5 transition-all duration-200 cursor-pointer text-left ${
+                          deliveryChoice === opt.id
+                            ? "border-[#CFA4B8] bg-[#CFA4B8]/10"
+                            : "border-[#1A1A1A]/10 hover:border-[#CFA4B8]/50"
+                        }`}
+                      >
+                        <span className="text-2xl">{opt.emoji}</span>
+                        <div className="flex-1">
+                          <span className="font-semibold text-sm block">{opt.label}</span>
+                          <span className="text-xs text-[#1A1A1A]/50">{opt.sublabel}</span>
+                        </div>
+                        <span className={`text-sm font-bold ${deliveryChoice === opt.id ? "text-[#CFA4B8]" : "text-[#1A1A1A]/50"}`}>
+                          {opt.price === 0 ? "Gratuit" : `${opt.price}€`}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </StepWrapper>
+              )}
+
+              {/* STEP 7 - Payment choice */}
+              {step === 7 && (
                 <StepWrapper title="Mode de paiement">
                   <p className="text-sm text-[#1A1A1A]/60 mb-6">
                     Choisissez comment vous souhaitez régler votre commande. Vous recevrez un lien PayPal sécurisé par email.
@@ -668,9 +721,35 @@ export default function PersonnaliserPage() {
                 </div>
               )}
 
+              {/* Delivery */}
+              {deliveryChoice && (
+                <div className="mb-4">
+                  <p className="text-xs text-[#1A1A1A]/50 uppercase tracking-wide mb-1">
+                    Livraison
+                  </p>
+                  <p className="text-sm text-[#1A1A1A]/70">
+                    {DELIVERY_OPTIONS.find((d) => d.id === deliveryChoice)?.label}
+                    {shippingPrice > 0 && <span className="ml-1 font-medium">({shippingPrice}€)</span>}
+                    {shippingPrice === 0 && <span className="ml-1 font-medium text-green-600">(Gratuit)</span>}
+                  </p>
+                </div>
+              )}
+
               {/* Total */}
               {veilCount > 0 && (
                 <div className="pt-4 mt-4 border-t border-[#F6E8EF]">
+                  {shippingPrice > 0 && (
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-xs text-[#1A1A1A]/50">Sous-total</p>
+                      <p className="text-sm text-[#1A1A1A]/50">{subtotal}€</p>
+                    </div>
+                  )}
+                  {shippingPrice > 0 && (
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-xs text-[#1A1A1A]/50">Livraison</p>
+                      <p className="text-sm text-[#1A1A1A]/50">{shippingPrice}€</p>
+                    </div>
+                  )}
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-semibold text-[#1A1A1A]">Total</p>
                     <p className="text-xl font-bold text-[#CFA4B8]">{totalPrice}€</p>

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getClientIp, checkRateLimit, validateEmail } from "@/lib/rate-limit";
 
 /* ─── helpers ─── */
 
@@ -29,6 +30,11 @@ function escapeHtml(str: string): string {
 
 export async function POST(request: Request) {
   try {
+    // ── Rate limiting ──
+    const ip = getClientIp(request);
+    const rateLimitResponse = checkRateLimit(ip);
+    if (rateLimitResponse) return rateLimitResponse;
+
     const body = await request.json();
 
     // ── Sanitize inputs ──
@@ -44,7 +50,16 @@ export async function POST(request: Request) {
     const address = sanitize(body.address, 500);
     const instagram = sanitize(body.instagram, 100);
     const extraMessage = sanitize(body.extraMessage, 2000);
+    const deliveryChoice = sanitize(body.deliveryChoice, 30);
+    const shippingPrice = typeof body.shippingPrice === "number" ? body.shippingPrice : 0;
     const paymentChoice = sanitize(body.paymentChoice, 20);
+
+    const DELIVERY_LABELS: Record<string, string> = {
+      surplace: "Retrait sur place",
+      mainpropre: "Livraison en main propre (30 min)",
+      mondialrelay: "Mondial Relay",
+    };
+    const deliveryLabel = DELIVERY_LABELS[deliveryChoice] || deliveryChoice;
 
     // ── Validate required fields ──
     if (!veilCount || veilCount < 1) {
@@ -71,6 +86,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+    const emailError = validateEmail(email);
+    if (emailError) return emailError;
     if (!phone) {
       return NextResponse.json(
         { success: false, error: "Le numéro de téléphone est requis." },
@@ -98,13 +115,28 @@ export async function POST(request: Request) {
       ? `Acompte (30%) : ${depositAmount}€`
       : `Règlement intégral : ${totalPrice}€`;
 
+    // ── Color hex map ──
+    const COLOR_HEX: Record<string, string> = {
+      Blanc: "#FFFFFF", Noir: "#1A1A1A", Gris: "#9CA3AF", Beige: "#D4B896",
+      Taupe: "#8B7D6B", Marron: "#6B4423", Bleu: "#3B82F6", "Bleu marine": "#1E3A5F",
+      "Bleu ciel": "#87CEEB", Rose: "#F9A8D4", Rouge: "#DC2626", Bordeaux: "#722F37",
+      "Vert sauge": "#9CAF88", Violet: "#8B5CF6", Moutarde: "#D4A017", Corail: "#FF7F50",
+      Menthe: "#98FF98", Lavande: "#E6E6FA",
+    };
+
+    function colorDot(colorName: string): string {
+      const hex = COLOR_HEX[colorName] || "#CCC";
+      const border = hex === "#FFFFFF" ? "border:1px solid #ddd;" : "";
+      return `<span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:${hex};${border}vertical-align:middle;margin-right:6px;"></span><span style="vertical-align:middle;">${escapeHtml(colorName)}</span>`;
+    }
+
     // ── Escape all user-supplied strings for HTML ──
     const eName = escapeHtml(name);
     const eEmail = escapeHtml(email);
     const ePhone = escapeHtml(phone);
     const eAddress = escapeHtml(address);
     const eInstagram = escapeHtml(instagram.replace(/^@/, ""));
-    const eColors = colors.map(escapeHtml).join(", ");
+    const eColorsHtml = colors.map(c => colorDot(c)).join("&nbsp;&nbsp;&nbsp;");
     const eSupplements = supplements.map(escapeHtml).join(", ");
     const eBillets = escapeHtml(billetsAmount);
     const eGiftMessage = escapeHtml(giftMessage);
@@ -144,7 +176,7 @@ export async function POST(request: Request) {
             </tr>
             <tr>
               <td style="padding:8px 0;font-weight:600;color:#555;">Couleurs</td>
-              <td style="padding:8px 0;">${eColors}</td>
+              <td style="padding:8px 0;">${eColorsHtml}</td>
             </tr>
             ${eSupplements ? `<tr>
               <td style="padding:8px 0;font-weight:600;color:#555;">Suppléments</td>
@@ -154,8 +186,13 @@ export async function POST(request: Request) {
               <td style="padding:8px 0;font-weight:600;color:#555;">Billets</td>
               <td style="padding:8px 0;">${eBillets}€ + 10€</td>
             </tr>` : ""}
+            <tr>
+              <td style="padding:8px 0;font-weight:600;color:#555;">Livraison</td>
+              <td style="padding:8px 0;">${escapeHtml(deliveryLabel)}${shippingPrice > 0 ? ` (${shippingPrice}€)` : " (Gratuit)"}</td>
+            </tr>
           </table>
           <div style="margin:24px 0 0;background:#FDF8FA;border-radius:10px;padding:16px 20px;text-align:center;">
+            ${shippingPrice > 0 ? `<span style="font-size:12px;color:#999;">Sous-total: ${totalPrice - shippingPrice}€ + Livraison: ${shippingPrice}€</span><br/>` : ""}
             <span style="font-size:13px;color:#999;text-transform:uppercase;letter-spacing:1px;">Total</span><br/>
             <span style="font-size:28px;font-weight:800;color:#CFA4B8;">${totalPrice}€</span>
           </div>
@@ -250,7 +287,7 @@ export async function POST(request: Request) {
               </tr>
               <tr>
                 <td style="padding:6px 0;">Couleurs</td>
-                <td style="padding:6px 0;text-align:right;font-weight:600;color:#333;">${eColors}</td>
+                <td style="padding:6px 0;text-align:right;font-weight:600;color:#333;">${eColorsHtml}</td>
               </tr>
               ${eSupplements ? `<tr>
                 <td style="padding:6px 0;">Suppléments</td>
@@ -260,8 +297,19 @@ export async function POST(request: Request) {
                 <td style="padding:6px 0;">Billets</td>
                 <td style="padding:6px 0;text-align:right;font-weight:600;color:#333;">${eBillets}€</td>
               </tr>` : ""}
+              <tr>
+                <td style="padding:6px 0;">Livraison</td>
+                <td style="padding:6px 0;text-align:right;font-weight:600;color:#333;">${escapeHtml(deliveryLabel)}${shippingPrice > 0 ? ` (${shippingPrice}€)` : ""}</td>
+              </tr>
             </table>
             <hr style="border:none;border-top:1px solid #F6E8EF;margin:14px 0;" />
+            ${shippingPrice > 0 ? `<table width="100%"><tr>
+              <td style="font-size:13px;color:#999;">Sous-total</td>
+              <td style="text-align:right;font-size:13px;color:#999;">${totalPrice - shippingPrice}€</td>
+            </tr><tr>
+              <td style="font-size:13px;color:#999;">Livraison</td>
+              <td style="text-align:right;font-size:13px;color:#999;">${shippingPrice}€</td>
+            </tr></table>` : ""}
             <table width="100%"><tr>
               <td style="font-size:15px;font-weight:600;color:#333;">Total</td>
               <td style="text-align:right;font-size:22px;font-weight:800;color:#CFA4B8;">${totalPrice}€</td>
@@ -331,14 +379,14 @@ export async function POST(request: Request) {
 
       await Promise.all([
         resend.emails.send({
-          from: "La maison des voiles <onboarding@resend.dev>",
+          from: "La maison des voiles <commandes@lamaisondesvoiles.fr>",
           to: manelEmail,
           subject: `Nouvelle commande ${orderNumber} — ${eName} — ${paymentLabel}`,
           replyTo: email,
           html: adminHtml,
         }),
         resend.emails.send({
-          from: "La maison des voiles <onboarding@resend.dev>",
+          from: "La maison des voiles <commandes@lamaisondesvoiles.fr>",
           to: email,
           subject: `Confirmation de commande ${orderNumber} — La maison des voiles`,
           html: customerHtml,
@@ -355,6 +403,8 @@ export async function POST(request: Request) {
         supplements,
         billetsAmount,
         totalPrice,
+        deliveryChoice,
+        shippingPrice,
         paymentChoice,
         giftMessage,
         name,
