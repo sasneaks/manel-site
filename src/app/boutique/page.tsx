@@ -30,8 +30,8 @@ const products = [
   },
   // 5 voiles
   {
-    name: "Bouquet Ocean",
-    description: "Camaieu de bleus avec gysophiles",
+    name: "Bouquet Océan",
+    description: "Camaïeu de bleus avec gysophiles",
     image: "/images/bouquet5.jpg",
     voiles: 5,
     price: "18",
@@ -66,7 +66,7 @@ const products = [
   },
   {
     name: "Bouquet Horizon",
-    description: "Gris, blanc & bleu avec rose eternelle",
+    description: "Gris, blanc & bleu avec rose éternelle",
     image: "/images/bouquet-bleu.jpg",
     voiles: 5,
     price: "18",
@@ -125,8 +125,8 @@ export default function BoutiquePage() {
           Notre Boutique
         </h1>
         <p className="text-lg text-[#1A1A1A]/60 max-w-2xl mx-auto leading-relaxed">
-          Decouvrez nos bouquets de voiles faits main, prets a offrir ou a
-          s&apos;offrir. Chaque bouquet est compose avec soin.
+          Découvrez nos bouquets de voiles faits main, prêts à offrir ou à
+          s&apos;offrir. Chaque bouquet est composé avec soin.
         </p>
       </section>
 
@@ -206,7 +206,7 @@ export default function BoutiquePage() {
         {filtered.length === 0 && !fading && (
           <div className="text-center py-20">
             <p className="text-[#1A1A1A]/40 text-lg">
-              Aucun bouquet dans cette categorie pour le moment.
+              Aucun bouquet dans cette catégorie pour le moment.
             </p>
           </div>
         )}
@@ -219,14 +219,14 @@ export default function BoutiquePage() {
             Envie d&apos;un bouquet sur mesure ?
           </h2>
           <p className="text-[#1A1A1A]/60 mb-8 max-w-md mx-auto leading-relaxed">
-            Choisissez vos couleurs, le nombre de voiles et creez un bouquet qui
+            Choisissez vos couleurs, le nombre de voiles et créez un bouquet qui
             vous ressemble.
           </p>
           <Link
             href="/personnaliser"
             className="inline-flex items-center gap-2 bg-[#CFA4B8] hover:bg-[#b8899e] text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-200 shadow-lg shadow-[#CFA4B8]/25 hover:shadow-xl hover:shadow-[#CFA4B8]/30"
           >
-            Personnalisez le votre
+            Personnalisez le vôtre
             <svg
               className="w-4 h-4"
               fill="none"

@@ -17,13 +17,13 @@ export default function NotFound() {
           Page introuvable
         </h1>
         <p className="text-lg text-[#1A1A1A]/60 leading-relaxed mb-10">
-          Desolee, la page que vous cherchez n&apos;existe pas ou a ete deplacee.
+          Désolée, la page que vous cherchez n&apos;existe pas ou a été déplacée.
         </p>
         <Link
           href="/"
           className="inline-flex items-center justify-center rounded-full bg-[#CFA4B8] px-8 py-3.5 text-white font-medium text-base shadow-lg hover:bg-[#b8899e] hover:shadow-xl transition-all duration-300"
         >
-          Retour a l&apos;accueil
+          Retour à l&apos;accueil
         </Link>
       </div>
     </main>

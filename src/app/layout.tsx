@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   keywords: [
     "bouquet de voiles",
     "cadeau fait main",
-    "bouquet personnalise",
+    "bouquet personnalisé",
     "cadeau original",
     "voiles",
     "hijab bouquet",

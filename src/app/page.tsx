@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const whyCards = [
   {
     title: "Cadeau original",
-    description: "Un present unique qui surprend et emerveille a chaque fois.",
+    description: "Un présent unique qui surprend et émerveille à chaque fois.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 009.375 7.5H12m0-2.625A2.625 2.625 0 0114.625 7.5H12m0-2.625V7.5m0 0H3.375a1.125 1.125 0 00-1.125 1.125v2.25a1.125 1.125 0 001.125 1.125H12m0-4.5h8.625a1.125 1.125 0 011.125 1.125v2.25a1.125 1.125 0 01-1.125 1.125H12" />
@@ -20,7 +20,7 @@ const whyCards = [
   },
   {
     title: "Personnalisable",
-    description: "Choisissez les couleurs qui correspondent a vos envies.",
+    description: "Choisissez les couleurs qui correspondent à vos envies.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
@@ -29,7 +29,7 @@ const whyCards = [
   },
   {
     title: "Fait main avec soin",
-    description: "Chaque bouquet est confectionne a la main avec amour.",
+    description: "Chaque bouquet est confectionné à la main avec amour.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
@@ -37,8 +37,8 @@ const whyCards = [
     ),
   },
   {
-    title: "Ideal pour surprendre",
-    description: "Parfait pour les anniversaires, mariages et moments speciaux.",
+    title: "Idéal pour surprendre",
+    description: "Parfait pour les anniversaires, mariages et moments spéciaux.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -51,19 +51,19 @@ const bouquets = [
   {
     title: "Bouquet 3 voiles",
     price: "12",
-    description: "Un trio elegant pour un cadeau delicat et raffine.",
+    description: "Un trio élégant pour un cadeau délicat et raffiné.",
     image: "/images/bouquet-beige.jpg",
   },
   {
     title: "Bouquet 4 voiles",
     price: "15",
-    description: "L'equilibre parfait entre douceur et generosite.",
+    description: "L'équilibre parfait entre douceur et générosité.",
     image: "/images/bouquet9.jpg",
   },
   {
     title: "Bouquet 5 voiles",
     price: "18",
-    description: "Un bouquet genereux pour marquer les grandes occasions.",
+    description: "Un bouquet généreux pour marquer les grandes occasions.",
     image: "/images/bouquet7.jpg",
   },
   {
@@ -75,34 +75,34 @@ const bouquets = [
 ];
 
 const galleryImages = [
-  { src: "/images/bouquet2.jpg", alt: "Creation bouquet de voiles 1" },
-  { src: "/images/bouquet5.jpg", alt: "Creation bouquet de voiles 2" },
-  { src: "/images/bouquet7.jpg", alt: "Creation bouquet de voiles 3" },
-  { src: "/images/bouquet8.jpg", alt: "Creation bouquet de voiles 4" },
-  { src: "/images/bouquet9.jpg", alt: "Creation bouquet de voiles 5" },
-  { src: "/images/bouquet-bleu.jpg", alt: "Creation bouquet de voiles 6" },
+  { src: "/images/bouquet2.jpg", alt: "Création bouquet de voiles 1" },
+  { src: "/images/bouquet5.jpg", alt: "Création bouquet de voiles 2" },
+  { src: "/images/bouquet7.jpg", alt: "Création bouquet de voiles 3" },
+  { src: "/images/bouquet8.jpg", alt: "Création bouquet de voiles 4" },
+  { src: "/images/bouquet9.jpg", alt: "Création bouquet de voiles 5" },
+  { src: "/images/bouquet-bleu.jpg", alt: "Création bouquet de voiles 6" },
 ];
 
 const steps = [
-  { number: "1", title: "Choisissez votre bouquet", description: "Selectionnez le nombre de voiles souhaite." },
-  { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette parmi nos teintes elegantes." },
-  { number: "3", title: "Recevez votre bouquet", description: "Livre avec soin, pret a offrir." },
+  { number: "1", title: "Choisissez votre bouquet", description: "Sélectionnez le nombre de voiles souhaité." },
+  { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette parmi nos teintes élégantes." },
+  { number: "3", title: "Recevez votre bouquet", description: "Livré avec soin, prêt à offrir." },
 ];
 
 const testimonials = [
   {
     name: "Amina R.",
-    text: "J'ai offert un bouquet de 5 voiles a ma soeur pour son anniversaire. Elle etait tellement emue ! Les couleurs etaient exactement comme je les avais choisies. Merci Manel !",
+    text: "J'ai offert un bouquet de 5 voiles à ma soeur pour son anniversaire. Elle était tellement émue ! Les couleurs étaient exactement comme je les avais choisies. Merci Manel !",
     stars: 5,
   },
   {
     name: "Fatima B.",
-    text: "Un cadeau original et raffine. La qualite des voiles est superbe et la presentation en bouquet est magnifique. Je recommande les yeux fermes.",
+    text: "Un cadeau original et raffiné. La qualité des voiles est superbe et la présentation en bouquet est magnifique. Je recommande les yeux fermés.",
     stars: 5,
   },
   {
     name: "Nour S.",
-    text: "Commande livree rapidement et soigneusement emballee. Le bouquet de 4 voiles etait parfait pour un cadeau de mariage. Tout le monde a adore !",
+    text: "Commande livrée rapidement et soigneusement emballée. Le bouquet de 4 voiles était parfait pour un cadeau de mariage. Tout le monde a adoré !",
     stars: 5,
   },
 ];
@@ -153,7 +153,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Store",
     name: "Manel.k - La maison des voiles",
-    description: "Bouquets de voiles faits main et personnalisables. Cadeau unique et plein d'emotion.",
+    description: "Bouquets de voiles faits main et personnalisables. Cadeau unique et plein d'émotion.",
     url: "https://lamaisondesvoiles.fr",
     image: "https://lamaisondesvoiles.fr/opengraph-image.jpg",
     priceRange: "5€ - 50€",
@@ -196,14 +196,14 @@ export default function Home() {
               des voiles
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-[#1A1A1A]/70 max-w-lg mx-auto md:mx-0 leading-relaxed">
-              Des bouquets de voiles faits main pour offrir un cadeau unique et plein d&apos;emotion.
+              Des bouquets de voiles faits main pour offrir un cadeau unique et plein d&apos;émotion.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Link
                 href="/personnaliser"
                 className="inline-flex items-center justify-center rounded-full bg-[#CFA4B8] px-8 py-3.5 text-white font-medium text-base shadow-lg hover:bg-[#b8899e] hover:shadow-xl transition-all duration-300"
               >
-                Creer mon bouquet
+                Créer mon bouquet
               </Link>
               <Link
                 href="#bouquets"
@@ -241,7 +241,7 @@ export default function Home() {
             Pourquoi offrir un bouquet de voiles&nbsp;?
           </h2>
           <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
-            Un cadeau fait main qui allie elegance, douceur et originalite.
+            Un cadeau fait main qui allie élégance, douceur et originalité.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyCards.map((card, i) => (
@@ -273,7 +273,7 @@ export default function Home() {
             Choisissez votre bouquet
           </h2>
           <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
-            Du plus delicat au plus genereux, trouvez le bouquet parfait.
+            Du plus délicat au plus généreux, trouvez le bouquet parfait.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {bouquets.map((bouquet, i) => (
@@ -316,10 +316,10 @@ export default function Home() {
           <h2
             className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
                       >
-            Nos creations
+            Nos créations
           </h2>
           <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
-            Chaque bouquet est unique, confectionne avec soin et amour.
+            Chaque bouquet est unique, confectionné avec soin et amour.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryImages.map((img, i) => (
@@ -358,10 +358,10 @@ export default function Home() {
           <h2
             className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
                       >
-            Comment ca marche
+            Comment ça marche
           </h2>
           <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-20">
-            En trois etapes simples, recevez votre bouquet personnalise.
+            En trois étapes simples, recevez votre bouquet personnalisé.
           </p>
           <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-14 md:gap-0">
             {/* Connecting line (desktop only) */}
@@ -444,7 +444,7 @@ export default function Home() {
           <h2
             className="scroll-reveal text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-5"
                       >
-            Creez votre bouquet sur mesure
+            Créez votre bouquet sur mesure
           </h2>
           <p className="scroll-reveal text-lg text-[#1A1A1A]/70 mb-10 max-w-xl mx-auto leading-relaxed">
             Personnalisez les couleurs et offrez un cadeau unique
