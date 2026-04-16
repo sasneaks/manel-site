@@ -519,7 +519,11 @@ function PersonnaliserContent() {
                     {DELIVERY_OPTIONS.map((opt) => (
                       <button
                         key={opt.id}
-                        onClick={() => setDeliveryChoice(opt.id)}
+                        onClick={() => {
+                          setDeliveryChoice(opt.id);
+                          if (opt.id === "mondialrelay") setPaymentChoice("total");
+                          else if (paymentChoice === "total" && deliveryChoice === "mondialrelay") setPaymentChoice("");
+                        }}
                         className={`flex items-center gap-4 rounded-xl border-2 px-5 py-5 transition-all duration-200 cursor-pointer text-left ${
                           deliveryChoice === opt.id
                             ? "border-[#CFA4B8] bg-[#CFA4B8]/10"
@@ -543,39 +547,61 @@ function PersonnaliserContent() {
               {/* STEP 7 - Payment choice */}
               {step === 7 && (
                 <StepWrapper title="Mode de paiement">
-                  <p className="text-sm text-[#1A1A1A]/60 mb-6">
-                    Choisissez comment vous souhaitez régler votre commande. Vous recevrez un lien PayPal sécurisé par email.
-                  </p>
-                  <div className="grid gap-4">
-                    <button
-                      onClick={() => setPaymentChoice("acompte")}
-                      className={`flex flex-col rounded-xl border-2 px-6 py-5 transition-all duration-200 cursor-pointer text-left ${
-                        paymentChoice === "acompte"
-                          ? "border-[#CFA4B8] bg-[#CFA4B8]/10"
-                          : "border-[#1A1A1A]/10 hover:border-[#CFA4B8]/50"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between w-full mb-2">
-                        <span className="font-semibold text-sm">Acompte (30%)</span>
-                        <span className={`text-lg font-bold ${paymentChoice === "acompte" ? "text-[#CFA4B8]" : "text-[#1A1A1A]/50"}`}>{Math.ceil(totalPrice * 0.3)}€</span>
+                  {deliveryChoice === "mondialrelay" ? (
+                    <>
+                      <div className="bg-[#FFF3E0] rounded-xl p-4 mb-6">
+                        <p className="text-sm text-[#E65100] font-medium">Pour les envois Mondial Relay, le règlement intégral est requis avant expédition.</p>
                       </div>
-                      <span className="text-xs text-[#1A1A1A]/50">Versez 30% maintenant, le reste à la livraison</span>
-                    </button>
-                    <button
-                      onClick={() => setPaymentChoice("total")}
-                      className={`flex flex-col rounded-xl border-2 px-6 py-5 transition-all duration-200 cursor-pointer text-left ${
-                        paymentChoice === "total"
-                          ? "border-[#CFA4B8] bg-[#CFA4B8]/10"
-                          : "border-[#1A1A1A]/10 hover:border-[#CFA4B8]/50"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between w-full mb-2">
-                        <span className="font-semibold text-sm">Règlement intégral</span>
-                        <span className={`text-lg font-bold ${paymentChoice === "total" ? "text-[#CFA4B8]" : "text-[#1A1A1A]/50"}`}>{totalPrice}€</span>
+                      <div className="grid gap-4">
+                        <button
+                          onClick={() => setPaymentChoice("total")}
+                          className="flex flex-col rounded-xl border-2 px-6 py-5 transition-all duration-200 cursor-pointer text-left border-[#CFA4B8] bg-[#CFA4B8]/10"
+                        >
+                          <div className="flex items-center justify-between w-full mb-2">
+                            <span className="font-semibold text-sm">Règlement intégral</span>
+                            <span className="text-lg font-bold text-[#CFA4B8]">{totalPrice}€</span>
+                          </div>
+                          <span className="text-xs text-[#1A1A1A]/50">Paiement requis avant expédition</span>
+                        </button>
                       </div>
-                      <span className="text-xs text-[#1A1A1A]/50">Réglez la totalité maintenant</span>
-                    </button>
-                  </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-sm text-[#1A1A1A]/60 mb-6">
+                        Choisissez comment vous souhaitez régler votre commande. Vous recevrez un lien PayPal sécurisé par email.
+                      </p>
+                      <div className="grid gap-4">
+                        <button
+                          onClick={() => setPaymentChoice("acompte")}
+                          className={`flex flex-col rounded-xl border-2 px-6 py-5 transition-all duration-200 cursor-pointer text-left ${
+                            paymentChoice === "acompte"
+                              ? "border-[#CFA4B8] bg-[#CFA4B8]/10"
+                              : "border-[#1A1A1A]/10 hover:border-[#CFA4B8]/50"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between w-full mb-2">
+                            <span className="font-semibold text-sm">Acompte (30%)</span>
+                            <span className={`text-lg font-bold ${paymentChoice === "acompte" ? "text-[#CFA4B8]" : "text-[#1A1A1A]/50"}`}>{Math.ceil(totalPrice * 0.3)}€</span>
+                          </div>
+                          <span className="text-xs text-[#1A1A1A]/50">Versez 30% maintenant, le reste à la livraison</span>
+                        </button>
+                        <button
+                          onClick={() => setPaymentChoice("total")}
+                          className={`flex flex-col rounded-xl border-2 px-6 py-5 transition-all duration-200 cursor-pointer text-left ${
+                            paymentChoice === "total"
+                              ? "border-[#CFA4B8] bg-[#CFA4B8]/10"
+                              : "border-[#1A1A1A]/10 hover:border-[#CFA4B8]/50"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between w-full mb-2">
+                            <span className="font-semibold text-sm">Règlement intégral</span>
+                            <span className={`text-lg font-bold ${paymentChoice === "total" ? "text-[#CFA4B8]" : "text-[#1A1A1A]/50"}`}>{totalPrice}€</span>
+                          </div>
+                          <span className="text-xs text-[#1A1A1A]/50">Réglez la totalité maintenant</span>
+                        </button>
+                      </div>
+                    </>
+                  )}
                   <div className="mt-6 flex items-center gap-2 text-xs text-[#1A1A1A]/40">
                     <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
