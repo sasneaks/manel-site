@@ -59,7 +59,7 @@ export default function Navbar() {
               alt="Manel.k - La maison des voiles"
               width={140}
               height={140}
-              className="h-12 md:h-14 w-auto"
+              className="h-16 md:h-20 w-auto"
               priority
             />
           </Link>

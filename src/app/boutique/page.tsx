@@ -159,7 +159,7 @@ export default function BoutiquePage() {
           {filtered.map((product) => (
             <div
               key={product.name}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
             >
               {/* Image */}
               <div className="relative aspect-square overflow-hidden">
@@ -179,16 +179,16 @@ export default function BoutiquePage() {
               </div>
 
               {/* Info */}
-              <div className="p-4 md:p-5">
+              <div className="p-4 md:p-5 flex flex-col flex-1">
                 <div className="flex items-start justify-between gap-2 mb-1.5">
                   <h3 className="font-semibold text-[#1A1A1A] text-sm md:text-base leading-tight">
                     {product.name}
                   </h3>
                   <span className="text-[#CFA4B8] font-bold text-base md:text-lg whitespace-nowrap">
-                    {product.price}&euro;
+                    <span className="text-[9px] md:text-xs font-normal text-[#1A1A1A]/40">dès </span>{product.price}&euro;
                   </span>
                 </div>
-                <p className="text-[#1A1A1A]/50 text-xs md:text-sm mb-4 leading-relaxed">
+                <p className="text-[#1A1A1A]/50 text-xs md:text-sm mb-4 leading-relaxed flex-1">
                   {product.description}
                 </p>
                 <Link

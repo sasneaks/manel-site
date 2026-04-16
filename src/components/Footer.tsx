@@ -9,7 +9,7 @@ const navLinks = [
 ];
 
 const infoItems = [
-  "Livraison en France",
+  "Livraison dans toute la France",
   "Paiement sécurisé via PayPal",
   "Fait main avec soin",
 ];
@@ -28,7 +28,7 @@ export default function Footer() {
             className="h-14 md:h-20 w-auto"
           />
           <p className="mt-2 md:mt-4 text-xs md:text-sm text-white/50 text-center max-w-sm leading-relaxed">
-            Bouquets de voiles faits main, pour offrir un cadeau unique et plein d&apos;émotion.
+            Des bouquets de voiles faits main pour offrir un cadeau unique, même avec un petit budget.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default function Footer() {
               href="https://www.instagram.com/manel.k_95"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 md:gap-3 text-[11px] md:text-sm text-white/70 transition-colors duration-200 hover:text-[#CFA4B8]"
+              className="group inline-flex items-center gap-2 md:gap-3 text-[11px] md:text-sm text-white/70 transition-colors duration-200 hover:text-[#CFA4B8] mb-2 md:mb-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,13 +91,29 @@ export default function Footer() {
                 strokeWidth={1.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-5 w-5"
+                className="h-4 w-4 md:h-5 md:w-5"
               >
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
               <span>@manel.k_95</span>
+            </a>
+            <a
+              href="https://www.snapchat.com/add/manel.k95"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 md:gap-3 text-[11px] md:text-sm text-white/70 transition-colors duration-200 hover:text-[#FFFC00]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-4 w-4 md:h-5 md:w-5"
+              >
+                <path d="M12 2C9.8 2 8.2 3.1 7.4 5c-.5 1.2-.4 3.6-.2 5.2-.5.2-1.1.2-1.6-.1-.5-.2-.9-.2-1.2 0-.5.3-.5.8-.2 1.3.4.6 1.1 1.1 1.8 1.4.4.2.7.3 1 .5.4.2.5.4.4.8-.5 1.4-1.5 3-3 4.1-.5.3-1 .6-1.5.8-.6.2-.9.6-.8 1.2.1.6.7 1 1.8 1.3l.4.1c.7.2.8.4.9 1.1.1.3.1.6.3 1 .2.4.6.6 1.1.6.4 0 .8-.1 1.2-.2.8-.2 1.7-.5 2.9-.3.6.1 1.1.3 1.7.6 1.3.6 2.9 1.4 5.2 1.4h.1c2.3 0 3.9-.8 5.2-1.4.6-.3 1.1-.5 1.7-.6 1.2-.2 2.1.1 2.9.3.4.1.9.2 1.2.2.5 0 .9-.2 1.1-.6.2-.4.3-.7.3-1 .1-.7.3-.9.9-1.1l.4-.1c1.1-.3 1.7-.7 1.8-1.3.1-.6-.2-1-.8-1.2-.5-.2-1-.5-1.5-.8-1.5-1.1-2.5-2.7-3-4.1-.1-.4 0-.6.4-.8.3-.2.6-.3 1-.5.7-.3 1.4-.8 1.8-1.4.3-.5.3-1-.2-1.3-.3-.2-.7-.2-1.2 0-.5.2-1.1.3-1.6.1.2-1.6.3-4-.2-5.2C15.8 3.1 14.2 2 12 2z" />
+              </svg>
+              <span>manel.k95</span>
             </a>
           </div>
         </div>
