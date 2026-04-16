@@ -182,23 +182,23 @@ export default function Home() {
         className="relative w-full overflow-hidden"
         style={{ background: "linear-gradient(180deg, #F6E8EF 0%, #ffffff 100%)" }}
       >
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-36 flex flex-col-reverse md:flex-row items-center gap-14">
+        <div className="mx-auto max-w-7xl px-6 py-14 md:py-36 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-14">
           {/* Text */}
           <div className="flex-1 text-center md:text-left">
             <p className="text-sm uppercase tracking-[0.25em] text-[#CFA4B8] font-medium mb-4">
               Manel.k
             </p>
             <h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-[#1A1A1A]"
+              className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-[#1A1A1A]"
                           >
               La maison
               <br />
               des voiles
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-[#1A1A1A]/70 max-w-lg mx-auto md:mx-0 leading-relaxed">
+            <p className="mt-4 md:mt-6 text-base sm:text-xl text-[#1A1A1A]/70 max-w-lg mx-auto md:mx-0 leading-relaxed">
               Des bouquets de voiles faits main pour offrir un cadeau unique et plein d&apos;émotion.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <Link
                 href="/personnaliser"
                 className="inline-flex items-center justify-center rounded-full bg-[#CFA4B8] px-8 py-3.5 text-white font-medium text-base shadow-lg hover:bg-[#b8899e] hover:shadow-xl transition-all duration-300"
@@ -215,7 +215,7 @@ export default function Home() {
           </div>
 
           {/* Hero image */}
-          <div className="flex-1 w-full max-w-md md:max-w-lg relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+          <div className="flex-1 w-full max-w-[280px] md:max-w-lg relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
             <Image
               src="/images/WhatsApp Image 2026-03-24 at 20.04.35.jpeg"
               alt="Bouquet de voiles fait main"
@@ -233,27 +233,27 @@ export default function Home() {
       </section>
 
       {/* ───────────────── Why Section ───────────────── */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="mx-auto max-w-6xl px-6">
+      <section className="py-12 md:py-32 bg-white">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2
-            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+            className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
             Pourquoi offrir un bouquet de voiles&nbsp;?
           </h2>
-          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+          <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-16">
             Un cadeau fait main qui allie élégance, douceur et originalité.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {whyCards.map((card, i) => (
               <div
                 key={card.title}
-                className={`scroll-reveal delay-${i + 1} group flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-sm border border-[#F6E8EF] hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
+                className={`scroll-reveal delay-${i + 1} group flex flex-col items-center text-center bg-white rounded-2xl p-4 md:p-8 shadow-sm border border-[#F6E8EF] hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
               >
-                <div className="mb-5 w-14 h-14 rounded-2xl bg-[#F6E8EF] flex items-center justify-center text-[#CFA4B8] group-hover:bg-[#CFA4B8] group-hover:text-white transition-all duration-300">
+                <div className="mb-3 md:mb-5 w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#F6E8EF] flex items-center justify-center text-[#CFA4B8] group-hover:bg-[#CFA4B8] group-hover:text-white transition-all duration-300 [&_svg]:w-5 [&_svg]:h-5 md:[&_svg]:w-8 md:[&_svg]:h-8">
                   {card.icon}
                 </div>
-                <h3 className="font-semibold text-[#1A1A1A] text-lg mb-2">{card.title}</h3>
-                <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">{card.description}</p>
+                <h3 className="font-semibold text-[#1A1A1A] text-sm md:text-lg mb-1 md:mb-2">{card.title}</h3>
+                <p className="text-xs md:text-sm text-[#1A1A1A]/60 leading-relaxed">{card.description}</p>
               </div>
             ))}
           </div>
@@ -263,19 +263,19 @@ export default function Home() {
       {/* ───────────────── Bouquets Section ───────────────── */}
       <section
         id="bouquets"
-        className="py-24 md:py-32"
+        className="py-12 md:py-32"
         style={{ background: "linear-gradient(180deg, #ffffff 0%, #F6E8EF40 100%)" }}
       >
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2
-            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+            className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
             Choisissez votre bouquet
           </h2>
-          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+          <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-16">
             Du plus délicat au plus généreux, trouvez le bouquet parfait.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             {bouquets.map((bouquet, i) => (
               <div
                 key={bouquet.title}
@@ -294,9 +294,9 @@ export default function Home() {
                     <span className="text-[#CFA4B8] font-bold text-lg">{bouquet.price}&euro;</span>
                   </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-[#1A1A1A] text-lg mb-1">{bouquet.title}</h3>
-                  <p className="text-sm text-[#1A1A1A]/60 leading-relaxed mb-4">{bouquet.description}</p>
+                <div className="p-3 md:p-5">
+                  <h3 className="font-semibold text-[#1A1A1A] text-sm md:text-lg mb-0.5 md:mb-1">{bouquet.title}</h3>
+                  <p className="text-xs md:text-sm text-[#1A1A1A]/60 leading-relaxed mb-2 md:mb-4 line-clamp-2">{bouquet.description}</p>
                   <Link
                     href="/personnaliser"
                     className="inline-flex items-center justify-center w-full rounded-full bg-[#CFA4B8] px-5 py-2.5 text-white text-sm font-medium hover:bg-[#b8899e] transition-colors duration-300"
@@ -311,23 +311,23 @@ export default function Home() {
       </section>
 
       {/* ───────────────── Gallery Section ───────────────── */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="mx-auto max-w-6xl px-6">
+      <section className="py-12 md:py-32 bg-white">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2
-            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+            className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
             Nos créations
           </h2>
-          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+          <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
             Chaque bouquet est unique, confectionné avec soin et amour.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2 md:grid-cols-3 md:gap-4">
             {galleryImages.map((img, i) => (
               <Link
                 key={img.src}
                 href="/personnaliser"
-                className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-2xl ${
-                  i === 0 || i === 5 ? "row-span-2 aspect-[3/4]" : "aspect-square"
+                className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-xl md:rounded-2xl ${
+                  i === 0 || i === 5 ? "md:row-span-2 aspect-square md:aspect-[3/4]" : "aspect-square"
                 }`}
               >
                 <Image
@@ -351,20 +351,20 @@ export default function Home() {
       {/* ───────────────── How it Works ───────────────── */}
       <section
         id="comment-ca-marche"
-        className="py-24 md:py-32"
+        className="py-12 md:py-32"
         style={{ background: "linear-gradient(180deg, #ffffff 0%, #F6E8EF 100%)" }}
       >
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
           <h2
-            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+            className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
             Comment ça marche
           </h2>
-          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-20">
+          <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-20">
             En trois étapes simples, recevez votre bouquet personnalisé.
           </p>
-          <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-14 md:gap-0">
-            {/* Connecting line (desktop only) */}
+          <div className="relative flex flex-row items-start justify-between gap-4 md:gap-0">
+            {/* Connecting line */}
             <div className="hidden md:block absolute top-8 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-0.5 bg-[#EAD3DD]" />
 
             {steps.map((step, i) => (
@@ -373,28 +373,11 @@ export default function Home() {
                 className={`scroll-reveal delay-${i + 1} flex-1 flex flex-col items-center text-center relative z-10`}
               >
                 {/* Number circle */}
-                <div className="w-16 h-16 rounded-full bg-[#CFA4B8] text-white flex items-center justify-center text-2xl font-bold shadow-lg mb-6 ring-4 ring-white">
+                <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-[#CFA4B8] text-white flex items-center justify-center text-base md:text-2xl font-bold shadow-lg mb-3 md:mb-6 ring-2 md:ring-4 ring-white">
                   {step.number}
                 </div>
-                <h3 className="font-semibold text-[#1A1A1A] text-lg mb-2">{step.title}</h3>
-                <p className="text-sm text-[#1A1A1A]/60 max-w-[220px] leading-relaxed">{step.description}</p>
-
-                {/* Arrow between steps (mobile) */}
-                {i < steps.length - 1 && (
-                  <svg
-                    className="md:hidden mt-8 text-[#EAD3DD]"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 5v14M5 12l7 7 7-7" />
-                  </svg>
-                )}
+                <h3 className="font-semibold text-[#1A1A1A] text-xs md:text-lg mb-1 md:mb-2">{step.title}</h3>
+                <p className="text-[10px] md:text-sm text-[#1A1A1A]/60 max-w-[220px] leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
@@ -402,36 +385,36 @@ export default function Home() {
       </section>
 
       {/* ───────────────── Testimonials ───────────────── */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="mx-auto max-w-6xl px-6">
+      <section className="py-12 md:py-32 bg-white">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2
-            className="scroll-reveal text-center text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4"
+            className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
             Ce que disent nos clientes
           </h2>
-          <p className="scroll-reveal text-center text-[#1A1A1A]/60 max-w-2xl mx-auto mb-16">
+          <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
             Elles ont offert nos bouquets et elles en parlent.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
             {testimonials.map((t, i) => (
               <div
                 key={t.name}
-                className={`scroll-reveal delay-${i + 1} bg-[#F6E8EF]/40 rounded-2xl p-8 border border-[#EAD3DD]/50`}
+                className={`scroll-reveal delay-${i + 1} bg-[#F6E8EF]/40 rounded-2xl p-5 md:p-8 border border-[#EAD3DD]/50 min-w-[260px] md:min-w-0 snap-center shrink-0 md:shrink`}
               >
                 {/* Stars */}
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-0.5 md:gap-1 mb-3 md:mb-4">
                   {Array.from({ length: 5 }).map((_, si) => (
                     <StarIcon key={si} filled={si < t.stars} />
                   ))}
                 </div>
                 {/* Quote icon */}
-                <svg className="w-8 h-8 text-[#CFA4B8]/30 mb-3" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 md:w-8 md:h-8 text-[#CFA4B8]/30 mb-2 md:mb-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z" />
                 </svg>
-                <p className="text-[#1A1A1A]/70 leading-relaxed mb-6 text-sm">
+                <p className="text-[#1A1A1A]/70 leading-relaxed mb-4 md:mb-6 text-xs md:text-sm">
                   {t.text}
                 </p>
-                <p className="font-semibold text-[#1A1A1A] text-sm">{t.name}</p>
+                <p className="font-semibold text-[#1A1A1A] text-xs md:text-sm">{t.name}</p>
               </div>
             ))}
           </div>
@@ -439,14 +422,14 @@ export default function Home() {
       </section>
 
       {/* ───────────────── CTA Section ───────────────── */}
-      <section className="py-24 md:py-32 bg-[#F6E8EF]">
-        <div className="mx-auto max-w-3xl px-6 text-center">
+      <section className="py-12 md:py-32 bg-[#F6E8EF]">
+        <div className="mx-auto max-w-3xl px-4 md:px-6 text-center">
           <h2
-            className="scroll-reveal text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-5"
+            className="scroll-reveal text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-5"
                       >
             Créez votre bouquet sur mesure
           </h2>
-          <p className="scroll-reveal text-lg text-[#1A1A1A]/70 mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="scroll-reveal text-base md:text-lg text-[#1A1A1A]/70 mb-6 md:mb-10 max-w-xl mx-auto leading-relaxed">
             Personnalisez les couleurs et offrez un cadeau unique
           </p>
           <div className="scroll-reveal">
