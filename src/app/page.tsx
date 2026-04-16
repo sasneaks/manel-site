@@ -20,7 +20,7 @@ const whyCards = [
   },
   {
     title: "Personnalisable",
-    description: "Votre bouquet s&apos;adapte à vos envies, grâce à un large choix de couleurs.",
+    description: "Votre bouquet s'adapte à vos envies, grâce à un large choix de couleurs.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
@@ -63,7 +63,7 @@ const bouquets = [
   {
     title: "Bouquet 5 voiles",
     price: "18",
-    description: "Un bouquet généreux pour marquer les grandes occasions.",
+    description: "Le bouquet idéal pour les grandes occasions.",
     image: "/images/bouquet7.jpg",
   },
   {
@@ -76,8 +76,8 @@ const bouquets = [
 
 const galleryImages = [
   { src: "/images/bouquet2.jpg", alt: "Création bouquet de voiles 1" },
-  { src: "/images/bouquet5.jpg", alt: "Création bouquet de voiles 2" },
-  { src: "/images/bouquet7.jpg", alt: "Création bouquet de voiles 3" },
+  { src: "/images/bouquet7.jpg", alt: "Création bouquet de voiles 2" },
+  { src: "/images/bouquet5.jpg", alt: "Création bouquet de voiles 3" },
   { src: "/images/bouquet8.jpg", alt: "Création bouquet de voiles 4" },
   { src: "/images/bouquet9.jpg", alt: "Création bouquet de voiles 5" },
   { src: "/images/bouquet-bleu.jpg", alt: "Création bouquet de voiles 6" },
@@ -292,34 +292,27 @@ export default function Home() {
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
             Chaque bouquet est unique, confectionné avec soin et amour.
           </p>
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
-            {galleryImages.map((img, i) => {
-              // Layout: image 0 et 3 sont grandes (2 rows), les autres normales
-              const isTall = i === 0 || i === 3;
-              const isWide = i === 4;
-              return (
-                <Link
-                  key={img.src}
-                  href="/personnaliser"
-                  className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-xl md:rounded-2xl ${
-                    isTall ? "row-span-2" : ""
-                  } ${isWide ? "md:col-span-2" : ""}`}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 768px) 33vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/40 transition-all duration-500 flex items-center justify-center">
-                    <span className="text-white font-medium text-xs md:text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                      Voir la boutique
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-4">
+            {galleryImages.map((img, i) => (
+              <Link
+                key={img.src}
+                href="/personnaliser"
+                className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-xl md:rounded-2xl aspect-square`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 768px) 33vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/30 transition-all duration-500 flex items-center justify-center">
+                  <span className="text-white font-medium text-xs md:text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    Voir la boutique
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -366,10 +359,10 @@ export default function Home() {
           <h2
             className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
-            Ce que disent nos clientes
+            Ce que disent nos clients
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
-            Elles ont offert nos bouquets et elles en parlent.
+            Ils ont offert nos bouquets et en parlent.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {screenshotReviews.map((review, i) => (
