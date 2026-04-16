@@ -440,7 +440,10 @@ function PersonnaliserContent() {
                       }`}
                     >
                       <span className="text-2xl">💵</span>
-                      <span className="font-medium text-sm flex-1 text-left">Billets</span>
+                      <div className="flex-1 text-left">
+                        <span className="font-medium text-sm block">Billets en fleur</span>
+                        <span className="text-[11px] text-[#1A1A1A]/40">Billets pliés à la main en forme de rose (+10€ de mise en forme)</span>
+                      </div>
                       <span className={`text-sm font-semibold ${supplements.includes("Billets") ? "text-[#CFA4B8]" : "text-[#1A1A1A]/50"}`}>Somme + 10€</span>
                     </button>
                     {supplements.includes("Billets") && (

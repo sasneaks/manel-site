@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const whyCards = [
   {
     title: "Cadeau original",
-    description: "Un présent unique qui surprend et émerveille à chaque fois.",
+    description: "Chaque création est pensée pour surprendre et émerveiller tout en restant unique.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 009.375 7.5H12m0-2.625A2.625 2.625 0 0114.625 7.5H12m0-2.625V7.5m0 0H3.375a1.125 1.125 0 00-1.125 1.125v2.25a1.125 1.125 0 001.125 1.125H12m0-4.5h8.625a1.125 1.125 0 011.125 1.125v2.25a1.125 1.125 0 01-1.125 1.125H12" />
@@ -20,7 +20,7 @@ const whyCards = [
   },
   {
     title: "Personnalisable",
-    description: "Choisissez les couleurs qui correspondent à vos envies.",
+    description: "Votre bouquet s&apos;adapte à vos envies, grâce à un large choix de couleurs.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
@@ -29,7 +29,7 @@ const whyCards = [
   },
   {
     title: "Fait main avec soin",
-    description: "Chaque bouquet est confectionné à la main avec amour.",
+    description: "Chaque modèle est réalisé à la main avec une intention particulière.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
@@ -38,7 +38,7 @@ const whyCards = [
   },
   {
     title: "Idéal pour surprendre",
-    description: "Parfait pour les anniversaires, mariages et moments spéciaux.",
+    description: "Bouquet parfait pour les anniversaires, les mariages ou tout autre moment spécial.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -89,41 +89,12 @@ const steps = [
   { number: "3", title: "Recevez votre bouquet", description: "Livré avec soin, prêt à offrir." },
 ];
 
-const testimonials = [
-  {
-    name: "Amina R.",
-    text: "J'ai offert un bouquet de 5 voiles à ma soeur pour son anniversaire. Elle était tellement émue ! Les couleurs étaient exactement comme je les avais choisies. Merci Manel !",
-    stars: 5,
-  },
-  {
-    name: "Fatima B.",
-    text: "Un cadeau original et raffiné. La qualité des voiles est superbe et la présentation en bouquet est magnifique. Je recommande les yeux fermés.",
-    stars: 5,
-  },
-  {
-    name: "Nour S.",
-    text: "Commande livrée rapidement et soigneusement emballée. Le bouquet de 4 voiles était parfait pour un cadeau de mariage. Tout le monde a adoré !",
-    stars: 5,
-  },
+const screenshotReviews = [
+  { src: "/images/IMG_3262.JPG", alt: "Retour client — ma femme a kiffé" },
+  { src: "/images/IMG_3263.JPG", alt: "Retour client — j'aime vraiment trop le concept" },
+  { src: "/images/IMG_3264.JPG", alt: "Retour client — elles ont grave kiffé" },
+  { src: "/images/IMG_3265.JPG", alt: "Retour client — c'est tellement beau" },
 ];
-
-/* ──────────────────────────────────────────────
-   Star SVG component
-   ────────────────────────────────────────────── */
-
-function StarIcon({ filled }: { filled: boolean }) {
-  return (
-    <svg
-      className="w-5 h-5"
-      viewBox="0 0 20 20"
-      fill={filled ? "#CFA4B8" : "none"}
-      stroke="#CFA4B8"
-      strokeWidth={1.5}
-    >
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  );
-}
 
 /* ──────────────────────────────────────────────
    Page component
@@ -196,7 +167,7 @@ export default function Home() {
               des voiles
             </h1>
             <p className="mt-4 md:mt-6 text-base sm:text-xl text-[#1A1A1A]/70 max-w-lg mx-auto md:mx-0 leading-relaxed">
-              Des bouquets de voiles faits main pour offrir un cadeau unique et plein d&apos;émotion.
+              Des bouquets de voiles faits main pour offrir un cadeau unique, même avec un petit budget.
             </p>
             <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <Link
@@ -238,16 +209,16 @@ export default function Home() {
           <h2
             className="scroll-reveal text-center text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4"
                       >
-            Pourquoi offrir un bouquet de voiles&nbsp;?
+            Offrir un bouquet de voiles
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-16">
-            Un cadeau fait main qui allie élégance, douceur et originalité.
+            C&apos;est offrir un cadeau fait main qui allie élégance, douceur et originalité.
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {whyCards.map((card, i) => (
               <div
                 key={card.title}
-                className={`scroll-reveal delay-${i + 1} group flex flex-col items-center text-center bg-white rounded-2xl p-4 md:p-8 shadow-sm border border-[#F6E8EF] hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
+                className={`scroll-reveal delay-${i + 1} group flex flex-col items-center text-center bg-white rounded-2xl p-4 md:p-8 shadow-sm border border-[#F6E8EF] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`}
               >
                 <div className="mb-3 md:mb-5 w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#F6E8EF] flex items-center justify-center text-[#CFA4B8] group-hover:bg-[#CFA4B8] group-hover:text-white transition-all duration-300 [&_svg]:w-5 [&_svg]:h-5 md:[&_svg]:w-8 md:[&_svg]:h-8">
                   {card.icon}
@@ -273,13 +244,13 @@ export default function Home() {
             Choisissez votre bouquet
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-16">
-            Du plus délicat au plus généreux, trouvez le bouquet parfait.
+            Du plus délicat au plus généreux, trouvez le bouquet qui correspond parfaitement à votre occasion.
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             {bouquets.map((bouquet, i) => (
               <div
                 key={bouquet.title}
-                className={`scroll-reveal delay-${i + 1} group bg-white rounded-2xl overflow-hidden shadow-sm border border-[#F6E8EF] hover:shadow-xl transition-all duration-300`}
+                className={`scroll-reveal delay-${i + 1} group bg-white rounded-2xl overflow-hidden shadow-sm border border-[#F6E8EF] hover:shadow-xl transition-all duration-300 flex flex-col`}
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
@@ -291,12 +262,12 @@ export default function Home() {
                   />
                   {/* Price badge */}
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-md">
-                    <span className="text-[#CFA4B8] font-bold text-lg">{bouquet.price}&euro;</span>
+                    <span className="text-[#CFA4B8] font-bold text-xs md:text-lg"><span className="text-[8px] md:text-[10px] font-normal opacity-70">dès </span>{bouquet.price}&euro;</span>
                   </div>
                 </div>
-                <div className="p-3 md:p-5">
+                <div className="p-3 md:p-5 flex flex-col flex-1">
                   <h3 className="font-semibold text-[#1A1A1A] text-sm md:text-lg mb-0.5 md:mb-1">{bouquet.title}</h3>
-                  <p className="text-xs md:text-sm text-[#1A1A1A]/60 leading-relaxed mb-2 md:mb-4 line-clamp-2">{bouquet.description}</p>
+                  <p className="text-xs md:text-sm text-[#1A1A1A]/60 leading-relaxed mb-2 md:mb-4 line-clamp-2 flex-1">{bouquet.description}</p>
                   <Link
                     href="/personnaliser"
                     className="inline-flex items-center justify-center w-full rounded-full bg-[#CFA4B8] px-5 py-2.5 text-white text-sm font-medium hover:bg-[#b8899e] transition-colors duration-300"
@@ -321,29 +292,34 @@ export default function Home() {
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
             Chaque bouquet est unique, confectionné avec soin et amour.
           </p>
-          <div className="grid grid-cols-3 gap-2 md:grid-cols-3 md:gap-4">
-            {galleryImages.map((img, i) => (
-              <Link
-                key={img.src}
-                href="/personnaliser"
-                className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-xl md:rounded-2xl ${
-                  i === 0 || i === 5 ? "md:row-span-2 aspect-square md:aspect-[3/4]" : "aspect-square"
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/40 transition-all duration-500 flex items-center justify-center">
-                  <span className="text-white font-medium text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    Voir la boutique
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
+            {galleryImages.map((img, i) => {
+              // Layout: image 0 et 3 sont grandes (2 rows), les autres normales
+              const isTall = i === 0 || i === 3;
+              const isWide = i === 4;
+              return (
+                <Link
+                  key={img.src}
+                  href="/personnaliser"
+                  className={`scroll-reveal delay-${Math.min(i + 1, 5)} group relative overflow-hidden rounded-xl md:rounded-2xl ${
+                    isTall ? "row-span-2" : ""
+                  } ${isWide ? "md:col-span-2" : ""}`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/40 transition-all duration-500 flex items-center justify-center">
+                    <span className="text-white font-medium text-xs md:text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                      Voir la boutique
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -395,22 +371,19 @@ export default function Home() {
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
             Elles ont offert nos bouquets et elles en parlent.
           </p>
-          <div className="grid grid-cols-3 gap-2 md:gap-8">
-            {testimonials.map((t, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+            {screenshotReviews.map((review, i) => (
               <div
-                key={t.name}
-                className={`scroll-reveal delay-${i + 1} bg-[#F6E8EF]/40 rounded-xl md:rounded-2xl p-3 md:p-8 border border-[#EAD3DD]/50`}
+                key={review.src}
+                className={`scroll-reveal delay-${i + 1} relative rounded-2xl overflow-hidden shadow-md border border-[#EAD3DD]/30 aspect-[9/16]`}
               >
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-2 md:mb-4">
-                  {Array.from({ length: 5 }).map((_, si) => (
-                    <StarIcon key={si} filled={si < t.stars} />
-                  ))}
-                </div>
-                <p className="text-[#1A1A1A]/70 leading-snug md:leading-relaxed mb-2 md:mb-6 text-[10px] md:text-sm line-clamp-5 md:line-clamp-none">
-                  {t.text}
-                </p>
-                <p className="font-semibold text-[#1A1A1A] text-[10px] md:text-sm">{t.name}</p>
+                <Image
+                  src={review.src}
+                  alt={review.alt}
+                  fill
+                  className="object-cover object-bottom"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
               </div>
             ))}
           </div>
