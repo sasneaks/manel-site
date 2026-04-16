@@ -55,8 +55,8 @@ export default function ContactPage() {
           Contactez-nous
         </h1>
         <p className="text-lg text-[#1A1A1A]/60 max-w-xl mx-auto leading-relaxed">
-          Une question, une demande particuliere ? N&apos;hesitez pas a nous
-          ecrire.
+          Une question, une demande particulière ? N&apos;hésitez pas à nous
+          écrire.
         </p>
       </section>
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
                 Envoyez-nous un message
               </h2>
               <p className="text-sm text-[#1A1A1A]/40 mb-8">
-                Nous vous repondrons dans les plus brefs delais.
+                Nous vous répondrons dans les plus brefs délais.
               </p>
 
               {status === "sent" ? (
@@ -91,10 +91,10 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">
-                    Message envoye !
+                    Message envoyé !
                   </h3>
                   <p className="text-[#1A1A1A]/50 mb-6">
-                    Merci pour votre message. Nous reviendrons vers vous tres
+                    Merci pour votre message. Nous reviendrons vers vous très
                     rapidement.
                   </p>
                   <button
@@ -185,7 +185,7 @@ export default function ContactPage() {
                         setForm((f) => ({ ...f, message: e.target.value }))
                       }
                       className="w-full bg-[#FDF8FA] border border-[#EAD3DD]/50 rounded-xl px-4 py-3 text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none focus:ring-2 focus:ring-[#CFA4B8]/40 focus:border-transparent transition resize-none"
-                      placeholder="Decrivez votre demande..."
+                      placeholder="Décrivez votre demande..."
                     />
                   </div>
 
@@ -237,7 +237,7 @@ export default function ContactPage() {
                         Une erreur est survenue.
                       </p>
                       <p className="text-red-500/70 text-xs mt-1">
-                        Veuillez reessayer ou nous contacter sur Instagram.
+                        Veuillez réessayer ou nous contacter sur Instagram.
                       </p>
                     </div>
                   )}
@@ -336,7 +336,7 @@ export default function ContactPage() {
             {/* Mini FAQ */}
             <div className="bg-white rounded-3xl p-6 shadow-sm">
               <h3 className="font-semibold text-[#1A1A1A] mb-5">
-                Questions frequentes
+                Questions fréquentes
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -357,7 +357,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-[#1A1A1A]">
-                      Delai de livraison
+                      Délai de livraison
                     </p>
                     <p className="text-xs text-[#1A1A1A]/50 mt-0.5">
                       2-5 jours
@@ -386,7 +386,7 @@ export default function ContactPage() {
                       Paiement
                     </p>
                     <p className="text-xs text-[#1A1A1A]/50 mt-0.5">
-                      Apres contact
+                      Après contact
                     </p>
                   </div>
                 </div>

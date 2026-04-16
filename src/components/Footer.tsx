@@ -4,13 +4,13 @@ import Image from "next/image";
 const navLinks = [
   { label: "Accueil", href: "/" },
   { label: "Boutique", href: "/boutique" },
-  { label: "Creer mon bouquet", href: "/personnaliser" },
+  { label: "Créer mon bouquet", href: "/personnaliser" },
   { label: "Contact", href: "/contact" },
 ];
 
 const infoItems = [
   "Livraison en France",
-  "Paiement securise via PayPal",
+  "Paiement sécurisé via PayPal",
   "Fait main avec soin",
 ];
 
@@ -28,7 +28,7 @@ export default function Footer() {
             className="h-20 w-auto"
           />
           <p className="mt-4 text-sm text-white/50 text-center max-w-sm leading-relaxed">
-            Bouquets de voiles faits main, pour offrir un cadeau unique et plein d&apos;emotion.
+            Bouquets de voiles faits main, pour offrir un cadeau unique et plein d&apos;émotion.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function Footer() {
         {/* Divider & Copyright */}
         <div className="mt-14 border-t border-white/10 pt-8 text-center text-xs text-white/40">
           &copy; 2025 Manel.k &mdash; La maison des voiles. Tous droits
-          reserves.
+          réservés.
         </div>
       </div>
     </footer>

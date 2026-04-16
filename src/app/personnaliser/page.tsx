@@ -44,10 +44,10 @@ const VEIL_OPTIONS = [
 ] as const;
 
 const SUPPLEMENTS = [
-  { name: "Rose eternelle blanche", price: 1, emoji: "\uD83C\uDF39" },
+  { name: "Rose éternelle blanche", price: 1, emoji: "\uD83C\uDF39" },
   { name: "Chocolats", price: 3, emoji: "\uD83C\uDF6B" },
   { name: "Gysophiles", price: 4, emoji: "\uD83C\uDF3C" },
-  { name: "Quatre epingles", price: 1, emoji: "\uD83D\uDCCC" },
+  { name: "Quatre épingles", price: 1, emoji: "\uD83D\uDCCC" },
 ] as const;
 
 const DELIVERY_OPTIONS = [
@@ -413,7 +413,7 @@ function PersonnaliserContent() {
 
               {/* STEP 3 - Supplements */}
               {step === 3 && (
-                <StepWrapper title="Supplements (optionnel)">
+                <StepWrapper title="Suppléments (optionnel)">
                   <div className="grid gap-3">
                     {SUPPLEMENTS.map((sup) => (
                       <button
@@ -467,7 +467,7 @@ function PersonnaliserContent() {
                     value={giftMessage}
                     onChange={(e) => setGiftMessage(e.target.value)}
                     rows={5}
-                    placeholder="Ecrivez ici un petit mot pour accompagner votre bouquet..."
+                    placeholder="Écrivez ici un petit mot pour accompagner votre bouquet..."
                     className="w-full rounded-xl border border-[#1A1A1A]/15 p-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#CFA4B8] resize-none transition"
                   />
                 </StepWrapper>
@@ -491,7 +491,7 @@ function PersonnaliserContent() {
                       required
                     />
                     <Input
-                      label="Telephone"
+                      label="Téléphone"
                       type="tel"
                       value={phone}
                       onChange={setPhone}
@@ -719,16 +719,16 @@ function PersonnaliserContent() {
                 selectedColors={selectedColors}
                 hexFor={hexFor}
                 hasGysophiles={supplements.includes("Gysophiles")}
-                hasRose={supplements.includes("Rose eternelle blanche")}
+                hasRose={supplements.includes("Rose éternelle blanche")}
                 hasChocolats={supplements.includes("Chocolats")}
-                hasEpingles={supplements.includes("Quatre epingles")}
+                hasEpingles={supplements.includes("Quatre épingles")}
                 hasBillets={supplements.includes("Billets")}
               />
             </div>
 
             {/* Summary */}
             <div className="bg-white rounded-2xl shadow-sm p-6 lg:sticky lg:top-[340px]">
-              <h2 className="font-semibold text-lg mb-4">Recapitulatif</h2>
+              <h2 className="font-semibold text-lg mb-4">Récapitulatif</h2>
 
               {/* Veil count */}
               <div className="mb-4">
@@ -770,7 +770,7 @@ function PersonnaliserContent() {
               {supplements.length > 0 && (
                 <div className="mb-4">
                   <p className="text-xs text-[#1A1A1A]/50 uppercase tracking-wide mb-2">
-                    Supplements
+                    Suppléments
                   </p>
                   <div className="flex flex-col gap-1">
                     {supplements.map((s) => (
