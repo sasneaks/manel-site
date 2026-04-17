@@ -368,13 +368,13 @@ export default function Home() {
             {screenshotReviews.map((review, i) => (
               <div
                 key={review.src}
-                className={`scroll-reveal delay-${i + 1} relative rounded-2xl overflow-hidden shadow-md border border-[#EAD3DD]/30 aspect-[9/16]`}
+                className={`scroll-reveal delay-${i + 1} relative rounded-xl md:rounded-2xl overflow-hidden shadow-md border border-[#EAD3DD]/30 aspect-[3/4]`}
               >
                 <Image
                   src={review.src}
                   alt={review.alt}
                   fill
-                  className="object-cover object-bottom"
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>
