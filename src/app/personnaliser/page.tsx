@@ -16,24 +16,50 @@ interface OrderResponse {
 /* ──────────────────────── Colors ───────────────────────── */
 
 const AVAILABLE_COLORS: { name: string; hex: string }[] = [
+  // Neutres clairs
   { name: "Blanc", hex: "#FFFFFF" },
-  { name: "Noir", hex: "#1A1A1A" },
-  { name: "Gris", hex: "#9CA3AF" },
+  { name: "Ivoire", hex: "#FFFDD0" },
+  { name: "Crème", hex: "#F5EBDC" },
+  { name: "Jaune paille", hex: "#F5E1A4" },
+  { name: "Champagne", hex: "#E8D4A2" },
+  { name: "Nude", hex: "#E8C4A8" },
   { name: "Beige", hex: "#D4B896" },
+  // Gris & noir
+  { name: "Gris", hex: "#9CA3AF" },
+  { name: "Gris anthracite", hex: "#4A4A4A" },
+  { name: "Noir", hex: "#1A1A1A" },
+  // Bruns & terre
+  { name: "Camel", hex: "#C19A6B" },
+  { name: "Caramel", hex: "#A67B5B" },
   { name: "Taupe", hex: "#8B7D6B" },
+  { name: "Terracotta", hex: "#C65D3F" },
   { name: "Marron", hex: "#6B4423" },
-  { name: "Bleu", hex: "#3B82F6" },
-  { name: "Bleu marine", hex: "#1E3A5F" },
-  { name: "Bleu ciel", hex: "#87CEEB" },
+  { name: "Chocolat", hex: "#3E2723" },
+  // Roses & rouges
+  { name: "Vieux rose", hex: "#C8A2A2" },
   { name: "Rose", hex: "#F9A8D4" },
+  { name: "Corail", hex: "#FF7F50" },
+  { name: "Orange", hex: "#E07A3C" },
   { name: "Rouge", hex: "#DC2626" },
   { name: "Bordeaux", hex: "#722F37" },
-  { name: "Vert sauge", hex: "#9CAF88" },
-  { name: "Violet", hex: "#8B5CF6" },
+  // Jaune
   { name: "Moutarde", hex: "#D4A017" },
-  { name: "Corail", hex: "#FF7F50" },
+  // Verts
+  { name: "Vert anis", hex: "#C5D86D" },
   { name: "Menthe", hex: "#98FF98" },
+  { name: "Vert d'eau", hex: "#A8D5D0" },
+  { name: "Vert sauge", hex: "#9CAF88" },
+  { name: "Vert kaki", hex: "#7C8471" },
+  { name: "Vert olive", hex: "#6B7349" },
+  // Bleus
+  { name: "Bleu ciel", hex: "#87CEEB" },
+  { name: "Turquoise", hex: "#40C4BD" },
+  { name: "Bleu", hex: "#3B82F6" },
+  { name: "Bleu canard", hex: "#2E5C6E" },
+  { name: "Bleu marine", hex: "#1E3A5F" },
+  // Violets
   { name: "Lavande", hex: "#E6E6FA" },
+  { name: "Violet", hex: "#8B5CF6" },
 ];
 
 const VEIL_OPTIONS = [
