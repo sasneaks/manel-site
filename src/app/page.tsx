@@ -86,7 +86,7 @@ const galleryImages = [
 const steps = [
   { number: "1", title: "Choisissez votre bouquet", description: "Choisissez le nombre de voiles." },
   { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette de couleurs." },
-  { number: "3", title: "Ajoutez des suppléments", description: "Rose éternelle, chocolats, gypsophiles… pour un bouquet encore plus original." },
+  { number: "3", title: "Ajoutez des suppléments", description: "Pour un bouquet encore plus original." },
   { number: "4", title: "Recevez votre bouquet", description: "Emballé et prêt à offrir." },
 ];
 
