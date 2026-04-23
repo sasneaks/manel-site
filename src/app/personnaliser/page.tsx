@@ -15,41 +15,50 @@ interface OrderResponse {
 
 /* ──────────────────────── Colors ───────────────────────── */
 
-// Triées par luminosité perçue (clair → foncé)
+// Ordre arc-en-ciel : blancs → roses → jaunes → bruns → verts → bleus → gris/noir
 const AVAILABLE_COLORS: { name: string; hex: string }[] = [
+  // Blancs & très clairs
   { name: "Blanc", hex: "#FFFFFF" },
+  { name: "Blanc cassé", hex: "#FAF5EB" },
   { name: "Ivoire", hex: "#FFFDD0" },
   { name: "Crème", hex: "#F5EBDC" },
   { name: "Lavande", hex: "#E6E6FA" },
-  { name: "Jaune paille", hex: "#F5E1A4" },
-  { name: "Menthe", hex: "#98FF98" },
-  { name: "Champagne", hex: "#E8D4A2" },
-  { name: "Nude", hex: "#E8C4A8" },
-  { name: "Vert d'eau", hex: "#A8D5D0" },
-  { name: "Vert anis", hex: "#C5D86D" },
+  // Roses → rouges
   { name: "Rose", hex: "#F9A8D4" },
-  { name: "Beige", hex: "#D4B896" },
-  { name: "Bleu ciel", hex: "#87CEEB" },
-  { name: "Vieux rose", hex: "#C8A2A2" },
-  { name: "Vert sauge", hex: "#9CAF88" },
-  { name: "Gris", hex: "#9CA3AF" },
-  { name: "Camel", hex: "#C19A6B" },
+  { name: "Rose pâle", hex: "#C8A2A2" },
+  { name: "Nude", hex: "#E8C4A8" },
   { name: "Corail", hex: "#FF7F50" },
-  { name: "Moutarde", hex: "#D4A017" },
-  { name: "Turquoise", hex: "#40C4BD" },
-  { name: "Orange", hex: "#E07A3C" },
-  { name: "Caramel", hex: "#A67B5B" },
-  { name: "Vert kaki", hex: "#7C8471" },
-  { name: "Taupe", hex: "#8B7D6B" },
-  { name: "Bleu", hex: "#3B82F6" },
-  { name: "Terracotta", hex: "#C65D3F" },
-  { name: "Vert olive", hex: "#6B7349" },
-  { name: "Bleu canard", hex: "#2E5C6E" },
-  { name: "Marron", hex: "#6B4423" },
-  { name: "Gris anthracite", hex: "#4A4A4A" },
   { name: "Bordeaux", hex: "#722F37" },
-  { name: "Bleu marine", hex: "#1E3A5F" },
+  // Oranges
+  { name: "Orange", hex: "#E07A3C" },
+  { name: "Terracotta", hex: "#C65D3F" },
+  // Jaunes
+  { name: "Jaune paille", hex: "#F5E1A4" },
+  { name: "Champagne", hex: "#E8D4A2" },
+  { name: "Moutarde", hex: "#D4A017" },
+  // Beiges & bruns
+  { name: "Beige", hex: "#D4B896" },
+  { name: "Camel", hex: "#C19A6B" },
+  { name: "Caramel", hex: "#A67B5B" },
+  { name: "Taupe", hex: "#8B7D6B" },
+  { name: "Marron", hex: "#6B4423" },
   { name: "Chocolat", hex: "#3E2723" },
+  // Verts (clair → foncé)
+  { name: "Menthe", hex: "#98FF98" },
+  { name: "Vert anis", hex: "#C5D86D" },
+  { name: "Vert d'eau", hex: "#A8D5D0" },
+  { name: "Vert sauge", hex: "#9CAF88" },
+  { name: "Vert kaki", hex: "#7C8471" },
+  { name: "Vert olive", hex: "#6B7349" },
+  // Bleus (clair → foncé)
+  { name: "Bleu ciel", hex: "#87CEEB" },
+  { name: "Turquoise", hex: "#40C4BD" },
+  { name: "Bleu", hex: "#3B82F6" },
+  { name: "Bleu canard", hex: "#2E5C6E" },
+  { name: "Bleu marine", hex: "#1E3A5F" },
+  // Gris & noir
+  { name: "Gris", hex: "#9CA3AF" },
+  { name: "Gris anthracite", hex: "#4A4A4A" },
   { name: "Noir", hex: "#1A1A1A" },
 ];
 
