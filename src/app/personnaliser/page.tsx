@@ -15,51 +15,42 @@ interface OrderResponse {
 
 /* ──────────────────────── Colors ───────────────────────── */
 
+// Triées par luminosité perçue (clair → foncé)
 const AVAILABLE_COLORS: { name: string; hex: string }[] = [
-  // Neutres clairs
   { name: "Blanc", hex: "#FFFFFF" },
   { name: "Ivoire", hex: "#FFFDD0" },
   { name: "Crème", hex: "#F5EBDC" },
+  { name: "Lavande", hex: "#E6E6FA" },
   { name: "Jaune paille", hex: "#F5E1A4" },
+  { name: "Menthe", hex: "#98FF98" },
   { name: "Champagne", hex: "#E8D4A2" },
   { name: "Nude", hex: "#E8C4A8" },
-  { name: "Beige", hex: "#D4B896" },
-  // Gris & noir
-  { name: "Gris", hex: "#9CA3AF" },
-  { name: "Gris anthracite", hex: "#4A4A4A" },
-  { name: "Noir", hex: "#1A1A1A" },
-  // Bruns & terre
-  { name: "Camel", hex: "#C19A6B" },
-  { name: "Caramel", hex: "#A67B5B" },
-  { name: "Taupe", hex: "#8B7D6B" },
-  { name: "Terracotta", hex: "#C65D3F" },
-  { name: "Marron", hex: "#6B4423" },
-  { name: "Chocolat", hex: "#3E2723" },
-  // Roses & rouges
-  { name: "Vieux rose", hex: "#C8A2A2" },
-  { name: "Rose", hex: "#F9A8D4" },
-  { name: "Corail", hex: "#FF7F50" },
-  { name: "Orange", hex: "#E07A3C" },
-  { name: "Rouge", hex: "#DC2626" },
-  { name: "Bordeaux", hex: "#722F37" },
-  // Jaune
-  { name: "Moutarde", hex: "#D4A017" },
-  // Verts
-  { name: "Vert anis", hex: "#C5D86D" },
-  { name: "Menthe", hex: "#98FF98" },
   { name: "Vert d'eau", hex: "#A8D5D0" },
-  { name: "Vert sauge", hex: "#9CAF88" },
-  { name: "Vert kaki", hex: "#7C8471" },
-  { name: "Vert olive", hex: "#6B7349" },
-  // Bleus
+  { name: "Vert anis", hex: "#C5D86D" },
+  { name: "Rose", hex: "#F9A8D4" },
+  { name: "Beige", hex: "#D4B896" },
   { name: "Bleu ciel", hex: "#87CEEB" },
+  { name: "Vieux rose", hex: "#C8A2A2" },
+  { name: "Vert sauge", hex: "#9CAF88" },
+  { name: "Gris", hex: "#9CA3AF" },
+  { name: "Camel", hex: "#C19A6B" },
+  { name: "Corail", hex: "#FF7F50" },
+  { name: "Moutarde", hex: "#D4A017" },
   { name: "Turquoise", hex: "#40C4BD" },
+  { name: "Orange", hex: "#E07A3C" },
+  { name: "Caramel", hex: "#A67B5B" },
+  { name: "Vert kaki", hex: "#7C8471" },
+  { name: "Taupe", hex: "#8B7D6B" },
   { name: "Bleu", hex: "#3B82F6" },
+  { name: "Terracotta", hex: "#C65D3F" },
+  { name: "Vert olive", hex: "#6B7349" },
   { name: "Bleu canard", hex: "#2E5C6E" },
+  { name: "Marron", hex: "#6B4423" },
+  { name: "Gris anthracite", hex: "#4A4A4A" },
+  { name: "Bordeaux", hex: "#722F37" },
   { name: "Bleu marine", hex: "#1E3A5F" },
-  // Violets
-  { name: "Lavande", hex: "#E6E6FA" },
-  { name: "Violet", hex: "#8B5CF6" },
+  { name: "Chocolat", hex: "#3E2723" },
+  { name: "Noir", hex: "#1A1A1A" },
 ];
 
 const VEIL_OPTIONS = [

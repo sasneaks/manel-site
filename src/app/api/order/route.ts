@@ -135,13 +135,13 @@ export async function POST(request: Request) {
       Camel: "#C19A6B", Caramel: "#A67B5B", Taupe: "#8B7D6B", Terracotta: "#C65D3F",
       Marron: "#6B4423", Chocolat: "#3E2723",
       "Vieux rose": "#C8A2A2", Rose: "#F9A8D4", Corail: "#FF7F50", Orange: "#E07A3C",
-      Rouge: "#DC2626", Bordeaux: "#722F37",
+      Bordeaux: "#722F37",
       Moutarde: "#D4A017",
       "Vert anis": "#C5D86D", Menthe: "#98FF98", "Vert d'eau": "#A8D5D0",
       "Vert sauge": "#9CAF88", "Vert kaki": "#7C8471", "Vert olive": "#6B7349",
       "Bleu ciel": "#87CEEB", Turquoise: "#40C4BD", Bleu: "#3B82F6",
       "Bleu canard": "#2E5C6E", "Bleu marine": "#1E3A5F",
-      Lavande: "#E6E6FA", Violet: "#8B5CF6",
+      Lavande: "#E6E6FA",
     };
 
     function colorDot(colorName: string): string {
