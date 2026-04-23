@@ -150,7 +150,7 @@ export async function POST(request: Request) {
         <!-- Thank you -->
         <tr><td style="background:#fff;padding:36px 40px 20px;text-align:center;">
           <h2 style="margin:0 0 8px;color:#1A1A1A;font-size:22px;">Merci pour votre message, ${eName} !</h2>
-          <p style="margin:0;color:#888;font-size:15px;">Nous avons bien recu votre demande.</p>
+          <p style="margin:0;color:#888;font-size:15px;">On a bien reçu votre message.</p>
         </td></tr>
 
         <!-- Recap -->
@@ -165,8 +165,8 @@ export async function POST(request: Request) {
         <tr><td style="background:#fff;padding:0 40px 32px;text-align:center;">
           <div style="background:#E8F5E9;border-radius:12px;padding:20px;">
             <p style="margin:0 0 8px;font-size:16px;">✓</p>
-            <p style="margin:0;color:#2E7D32;font-size:15px;font-weight:600;">Nous vous recontacterons tres rapidement !</p>
-            <p style="margin:8px 0 0;color:#555;font-size:13px;">Manel reviendra vers vous dans les plus brefs delais, generalement sous 24h.</p>
+            <p style="margin:0;color:#2E7D32;font-size:15px;font-weight:600;">On vous répond très vite !</p>
+            <p style="margin:8px 0 0;color:#555;font-size:13px;">Manel vous recontactera sous 24h en général.</p>
           </div>
         </td></tr>
 

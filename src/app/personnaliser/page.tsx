@@ -46,14 +46,14 @@ const VEIL_OPTIONS = [
 const SUPPLEMENTS = [
   { name: "Rose éternelle blanche", price: 1, emoji: "\uD83C\uDF39" },
   { name: "Chocolats", price: 3, emoji: "\uD83C\uDF6B" },
-  { name: "Gysophiles", price: 4, emoji: "\uD83C\uDF3C" },
+  { name: "Gypsophiles", price: 4, emoji: "\uD83C\uDF3C" },
   { name: "Quatre épingles", price: 1, emoji: "\uD83D\uDCCC" },
 ] as const;
 
 const DELIVERY_OPTIONS = [
-  { id: "surplace", label: "Retrait sur place", sublabel: "Gratuit — venez chercher votre bouquet", price: 0, emoji: "📍" },
-  { id: "mainpropre", label: "Livraison en main propre", sublabel: "Dans un rayon de 30 min — 10€", price: 10, emoji: "🚗" },
-  { id: "mondialrelay", label: "Mondial Relay", sublabel: "Livraison en point relais — France", price: 5.90, emoji: "📦" },
+  { id: "surplace", label: "Retrait sur place", sublabel: "Gratuit, venez chercher votre bouquet", price: 0, emoji: "📍" },
+  { id: "mainpropre", label: "Livraison en main propre", sublabel: "Dans un rayon de 30 min, 10€", price: 10, emoji: "🚗" },
+  { id: "mondialrelay", label: "Mondial Relay", sublabel: "Livraison en point relais, partout en France", price: 5.90, emoji: "📦" },
 ] as const;
 
 const TOTAL_STEPS = 7;
@@ -721,7 +721,7 @@ function PersonnaliserContent() {
                 veilCount={veilCount}
                 selectedColors={selectedColors}
                 hexFor={hexFor}
-                hasGysophiles={supplements.includes("Gysophiles")}
+                hasGypsophiles={supplements.includes("Gypsophiles")}
                 hasRose={supplements.includes("Rose éternelle blanche")}
                 hasChocolats={supplements.includes("Chocolats")}
                 hasEpingles={supplements.includes("Quatre épingles")}
@@ -765,7 +765,7 @@ function PersonnaliserContent() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-[#1A1A1A]/40">\u2014</p>
+                  <p className="text-sm text-[#1A1A1A]/40">—</p>
                 )}
               </div>
 

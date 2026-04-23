@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Manel.k \u2013 La maison des voiles",
   },
   description:
-    "Bouquets de voiles faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau unique et plein d\u2019\u00e9motion. Livraison en France.",
+    "Bouquets de voiles faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau qui change des fleurs classiques. Livraison en France.",
   keywords: [
     "bouquet de voiles",
     "cadeau fait main",

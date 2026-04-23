@@ -355,7 +355,7 @@ export async function POST(request: Request) {
               Payer ${paymentAmount}€ via PayPal
             </a>
             <p style="margin:16px 0 0;font-size:12px;color:#B8A0AC;">
-              En cliquant, vous serez redirigé(e) vers PayPal pour finaliser le paiement en toute sécurité.
+              Le bouton vous redirige vers PayPal pour le paiement.
             </p>
           </div>
         </td></tr>
@@ -374,7 +374,7 @@ export async function POST(request: Request) {
             </tr>
             <tr>
               <td style="padding:6px 12px 6px 0;vertical-align:top;font-size:18px;">3.</td>
-              <td style="padding:6px 0;">Votre bouquet sera préparé et livré avec soin</td>
+              <td style="padding:6px 0;">Votre bouquet sera préparé puis expédié ou remis en main propre</td>
             </tr>
           </table>
         </td></tr>

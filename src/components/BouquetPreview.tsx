@@ -4,7 +4,7 @@ interface BouquetPreviewProps {
   veilCount: number;
   selectedColors: string[];
   hexFor: (name: string) => string;
-  hasGysophiles: boolean;
+  hasGypsophiles: boolean;
   hasRose: boolean;
   hasChocolats: boolean;
   hasEpingles: boolean;
@@ -97,7 +97,7 @@ function VeilFlower({ cx, cy, r, color, isEmpty }: { cx: number; cy: number; r: 
   return <g className="transition-all duration-500">{petals}</g>;
 }
 
-// Small decorative dots for baby's breath (gysophiles)
+// Small decorative dots for baby's breath (gypsophiles)
 function BabyBreath({ positions }: { positions: { x: number; y: number }[] }) {
   return (
     <g>
@@ -213,7 +213,7 @@ function Billets() {
   );
 }
 
-export default function BouquetPreview({ veilCount, selectedColors, hexFor, hasGysophiles, hasRose, hasChocolats, hasEpingles, hasBillets }: BouquetPreviewProps) {
+export default function BouquetPreview({ veilCount, selectedColors, hexFor, hasGypsophiles, hasRose, hasChocolats, hasEpingles, hasBillets }: BouquetPreviewProps) {
   const layout = LAYOUTS[veilCount] || [];
 
   const babyBreathPositions = [
@@ -314,8 +314,8 @@ export default function BouquetPreview({ veilCount, selectedColors, hexFor, hasG
         {/* Billets — behind everything, sticking out */}
         {hasBillets && <Billets />}
 
-        {/* Gysophiles (baby's breath) - behind the flowers */}
-        {hasGysophiles && <BabyBreath positions={babyBreathPositions} />}
+        {/* Gypsophiles (baby's breath) - behind the flowers */}
+        {hasGypsophiles && <BabyBreath positions={babyBreathPositions} />}
 
         {/* Epingles — decorative pins between flowers */}
         {hasEpingles && <Epingles />}

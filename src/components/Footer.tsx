@@ -11,7 +11,7 @@ const navLinks = [
 const infoItems = [
   "Livraison dans toute la France",
   "Paiement sécurisé via PayPal",
-  "Fait main avec soin",
+  "Fait main",
 ];
 
 export default function Footer() {

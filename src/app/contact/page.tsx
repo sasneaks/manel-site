@@ -70,7 +70,7 @@ export default function ContactPage() {
                 Envoyez-nous un message
               </h2>
               <p className="text-sm text-[#1A1A1A]/40 mb-8">
-                Nous vous répondrons dans les plus brefs délais.
+                Réponse rapide, souvent dans la journée.
               </p>
 
               {status === "sent" ? (
@@ -94,8 +94,7 @@ export default function ContactPage() {
                     Message envoyé !
                   </h3>
                   <p className="text-[#1A1A1A]/50 mb-6">
-                    Merci pour votre message. Nous reviendrons vers vous très
-                    rapidement.
+                    Merci ! On revient vers vous très vite.
                   </p>
                   <button
                     onClick={() => setStatus("idle")}

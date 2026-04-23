@@ -10,8 +10,8 @@ import { useEffect } from "react";
 
 const whyCards = [
   {
-    title: "Cadeau original",
-    description: "Chaque création est pensée pour surprendre et émerveiller tout en restant unique.",
+    title: "Cadeau qui change",
+    description: "Un cadeau qu'on ne voit pas partout.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 009.375 7.5H12m0-2.625A2.625 2.625 0 0114.625 7.5H12m0-2.625V7.5m0 0H3.375a1.125 1.125 0 00-1.125 1.125v2.25a1.125 1.125 0 001.125 1.125H12m0-4.5h8.625a1.125 1.125 0 011.125 1.125v2.25a1.125 1.125 0 01-1.125 1.125H12" />
@@ -20,7 +20,7 @@ const whyCards = [
   },
   {
     title: "Personnalisable",
-    description: "Votre bouquet s'adapte à vos envies, grâce à un large choix de couleurs.",
+    description: "Choisissez vos couleurs dans la palette.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
@@ -28,8 +28,8 @@ const whyCards = [
     ),
   },
   {
-    title: "Fait main avec soin",
-    description: "Chaque modèle est réalisé à la main avec une intention particulière.",
+    title: "Fait main",
+    description: "Je fabrique chaque bouquet moi-même, un par un.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
@@ -37,8 +37,8 @@ const whyCards = [
     ),
   },
   {
-    title: "Idéal pour surprendre",
-    description: "Bouquet parfait pour les anniversaires, les mariages ou tout autre moment spécial.",
+    title: "Pour toutes les occasions",
+    description: "Anniversaire, mariage, naissance, ou juste pour faire plaisir.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -51,25 +51,25 @@ const bouquets = [
   {
     title: "Bouquet 3 voiles",
     price: "12",
-    description: "Un trio élégant pour un cadeau délicat et raffiné.",
+    description: "Trois voiles, format simple et joli.",
     image: "/images/bouquet-beige.jpg",
   },
   {
     title: "Bouquet 4 voiles",
     price: "15",
-    description: "L'équilibre parfait entre douceur et générosité.",
+    description: "Un peu plus volumineux, sans en faire trop.",
     image: "/images/bouquet9.jpg",
   },
   {
     title: "Bouquet 5 voiles",
     price: "18",
-    description: "Le bouquet idéal pour les grandes occasions.",
+    description: "Plus généreux, pour les grandes occasions.",
     image: "/images/bouquet7.jpg",
   },
   {
     title: "Bouquet 5 voiles",
     price: "18",
-    description: "Tons bleus avec gysophiles, un classique intemporel.",
+    description: "Camaïeu de bleus avec gypsophiles.",
     image: "/images/bouquet5.jpg",
   },
 ];
@@ -84,16 +84,16 @@ const galleryImages = [
 ];
 
 const steps = [
-  { number: "1", title: "Choisissez votre bouquet", description: "Sélectionnez le nombre de voiles souhaité." },
-  { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette parmi nos teintes élégantes." },
-  { number: "3", title: "Recevez votre bouquet", description: "Livré avec soin, prêt à offrir." },
+  { number: "1", title: "Choisissez votre bouquet", description: "Choisissez le nombre de voiles." },
+  { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette de couleurs." },
+  { number: "3", title: "Recevez votre bouquet", description: "Emballé et prêt à offrir." },
 ];
 
 const screenshotReviews = [
-  { src: "/images/IMG_3262.JPG", alt: "Retour client — ma femme a kiffé" },
-  { src: "/images/IMG_3263.JPG", alt: "Retour client — j'aime vraiment trop le concept" },
-  { src: "/images/IMG_3264.JPG", alt: "Retour client — elles ont grave kiffé" },
-  { src: "/images/IMG_3265.JPG", alt: "Retour client — c'est tellement beau" },
+  { src: "/images/IMG_3262.JPG", alt: "Retour client : ma femme a kiffé" },
+  { src: "/images/IMG_3263.JPG", alt: "Retour client : j'aime vraiment trop le concept" },
+  { src: "/images/IMG_3264.JPG", alt: "Retour client : elles ont grave kiffé" },
+  { src: "/images/IMG_3265.JPG", alt: "Retour client : c'est tellement beau" },
 ];
 
 /* ──────────────────────────────────────────────
@@ -124,7 +124,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Store",
     name: "Manel.k - La maison des voiles",
-    description: "Bouquets de voiles faits main et personnalisables. Cadeau unique et plein d'émotion.",
+    description: "Bouquets de voiles faits main et personnalisables, à petit budget.",
     url: "https://lamaisondesvoiles.fr",
     image: "https://lamaisondesvoiles.fr/opengraph-image.jpg",
     priceRange: "5€ - 50€",
@@ -212,7 +212,7 @@ export default function Home() {
             Offrir un bouquet de voiles
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-16">
-            C&apos;est offrir un cadeau fait main qui allie élégance, douceur et originalité.
+            C&apos;est offrir un cadeau fait main qui change des fleurs classiques.
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {whyCards.map((card, i) => (
@@ -244,7 +244,7 @@ export default function Home() {
             Choisissez votre bouquet
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-16">
-            Du plus délicat au plus généreux, trouvez le bouquet qui correspond parfaitement à votre occasion.
+            Trois formats, selon l&apos;occasion et le budget.
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             {bouquets.map((bouquet, i) => (
@@ -290,7 +290,7 @@ export default function Home() {
             Nos créations
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
-            Chaque bouquet est unique, confectionné avec soin et amour.
+            Quelques-unes de nos dernières créations.
           </p>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-4">
             {galleryImages.map((img, i) => (
@@ -330,7 +330,7 @@ export default function Home() {
             Comment ça marche
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-20">
-            En trois étapes simples, recevez votre bouquet personnalisé.
+            Trois étapes, et votre bouquet arrive chez vous.
           </p>
           <div className="relative flex flex-row items-start justify-between gap-4 md:gap-0">
             {/* Connecting line */}
@@ -362,7 +362,7 @@ export default function Home() {
             Ce que disent nos clients
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-6 md:mb-16">
-            Ils ont offert nos bouquets et en parlent.
+            Quelques retours reçus sur Instagram.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {screenshotReviews.map((review, i) => (

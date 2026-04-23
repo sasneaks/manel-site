@@ -31,7 +31,7 @@ const products = [
   // 5 voiles
   {
     name: "Bouquet Océan",
-    description: "Camaïeu de bleus avec gysophiles",
+    description: "Camaïeu de bleus avec gypsophiles",
     image: "/images/bouquet5.jpg",
     voiles: 5,
     price: "18",
@@ -73,7 +73,7 @@ const products = [
   },
   {
     name: "Bouquet Nature",
-    description: "Kaki, gris & noir avec gysophiles",
+    description: "Kaki, gris & noir avec gypsophiles",
     image: "/images/bouquet2.jpg",
     voiles: 5,
     price: "18",
@@ -125,8 +125,7 @@ export default function BoutiquePage() {
           Notre Boutique
         </h1>
         <p className="text-lg text-[#1A1A1A]/60 max-w-2xl mx-auto leading-relaxed">
-          Découvrez nos bouquets de voiles faits main, prêts à offrir ou à
-          s&apos;offrir. Chaque bouquet est composé avec soin.
+          Nos bouquets de voiles faits main. Prêts à offrir, ou à garder pour soi.
         </p>
       </section>
 
@@ -219,8 +218,7 @@ export default function BoutiquePage() {
             Envie d&apos;un bouquet sur mesure ?
           </h2>
           <p className="text-[#1A1A1A]/60 mb-8 max-w-md mx-auto leading-relaxed">
-            Choisissez vos couleurs, le nombre de voiles et créez un bouquet qui
-            vous ressemble.
+            Choisissez vos couleurs et le nombre de voiles.
           </p>
           <Link
             href="/personnaliser"
