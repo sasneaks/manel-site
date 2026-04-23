@@ -118,11 +118,11 @@ export async function POST(request: Request) {
     const orderNumber = `MANEL-${randomDigits}`;
 
     // ── Payment info ──
-    const paypalLink = process.env.PAYPAL_LINK || "https://paypal.me/votrecompte";
+    const paypalLink = process.env.PAYPAL_LINK || "https://www.paypal.com/paypalme/mnlkan";
     const depositAmount = Math.ceil(totalPrice * 0.3); // 30% deposit
     const isDeposit = paymentChoice === "acompte";
     const paymentAmount = isDeposit ? depositAmount : totalPrice;
-    const paypalPaymentUrl = `${paypalLink}/${paymentAmount}EUR`;
+    const paypalPaymentUrl = `${paypalLink}/${paymentAmount}EUR?country.x=FR&locale.x=fr_FR`;
     const paymentLabel = isDeposit
       ? `Acompte (30%) : ${depositAmount}€`
       : `Règlement intégral : ${totalPrice}€`;
