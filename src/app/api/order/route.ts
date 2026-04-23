@@ -129,17 +129,26 @@ export async function POST(request: Request) {
 
     // ── Color hex map ──
     const COLOR_HEX: Record<string, string> = {
-      Blanc: "#FFFFFF", Noir: "#1A1A1A", Gris: "#9CA3AF", Beige: "#D4B896",
-      Taupe: "#8B7D6B", Marron: "#6B4423", Bleu: "#3B82F6", "Bleu marine": "#1E3A5F",
-      "Bleu ciel": "#87CEEB", Rose: "#F9A8D4", Rouge: "#DC2626", Bordeaux: "#722F37",
-      "Vert sauge": "#9CAF88", Violet: "#8B5CF6", Moutarde: "#D4A017", Corail: "#FF7F50",
-      Menthe: "#98FF98", Lavande: "#E6E6FA",
+      Blanc: "#FFFFFF", Ivoire: "#FFFDD0", "Crème": "#F5EBDC", "Jaune paille": "#F5E1A4",
+      Champagne: "#E8D4A2", Nude: "#E8C4A8", Beige: "#D4B896",
+      Gris: "#9CA3AF", "Gris anthracite": "#4A4A4A", Noir: "#1A1A1A",
+      Camel: "#C19A6B", Caramel: "#A67B5B", Taupe: "#8B7D6B", Terracotta: "#C65D3F",
+      Marron: "#6B4423", Chocolat: "#3E2723",
+      "Vieux rose": "#C8A2A2", Rose: "#F9A8D4", Corail: "#FF7F50", Orange: "#E07A3C",
+      Rouge: "#DC2626", Bordeaux: "#722F37",
+      Moutarde: "#D4A017",
+      "Vert anis": "#C5D86D", Menthe: "#98FF98", "Vert d'eau": "#A8D5D0",
+      "Vert sauge": "#9CAF88", "Vert kaki": "#7C8471", "Vert olive": "#6B7349",
+      "Bleu ciel": "#87CEEB", Turquoise: "#40C4BD", Bleu: "#3B82F6",
+      "Bleu canard": "#2E5C6E", "Bleu marine": "#1E3A5F",
+      Lavande: "#E6E6FA", Violet: "#8B5CF6",
     };
 
     function colorDot(colorName: string): string {
       const hex = COLOR_HEX[colorName] || "#CCC";
       const border = hex === "#FFFFFF" ? "border:1px solid #ddd;" : "";
-      return `<span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:${hex};${border}vertical-align:middle;margin-right:6px;"></span><span style="vertical-align:middle;">${escapeHtml(colorName)}</span>`;
+      // Table-based dot: survit à Gmail/Outlook qui écrasent les <span> vides
+      return `<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="display:inline-block;vertical-align:middle;margin:0 6px 0 0;border-collapse:collapse;"><tr><td width="16" height="16" bgcolor="${hex}" style="width:16px;height:16px;background:${hex};border-radius:50%;${border}line-height:16px;font-size:0;">&nbsp;</td></tr></table><span style="vertical-align:middle;">${escapeHtml(colorName)}</span>`;
     }
 
     // ── Escape all user-supplied strings for HTML ──
