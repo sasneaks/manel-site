@@ -86,7 +86,8 @@ const galleryImages = [
 const steps = [
   { number: "1", title: "Choisissez votre bouquet", description: "Choisissez le nombre de voiles." },
   { number: "2", title: "Personnalisez les couleurs", description: "Composez votre palette de couleurs." },
-  { number: "3", title: "Recevez votre bouquet", description: "Emballé et prêt à offrir." },
+  { number: "3", title: "Ajoutez des suppléments", description: "Rose éternelle, chocolats, gypsophiles… pour un bouquet encore plus original." },
+  { number: "4", title: "Recevez votre bouquet", description: "Emballé et prêt à offrir." },
 ];
 
 const screenshotReviews = [
@@ -330,11 +331,11 @@ export default function Home() {
             Comment ça marche
           </h2>
           <p className="scroll-reveal text-center text-sm md:text-base text-[#1A1A1A]/60 max-w-2xl mx-auto mb-8 md:mb-20">
-            Trois étapes, et votre bouquet arrive chez vous.
+            Quatre étapes, et votre bouquet arrive chez vous.
           </p>
           <div className="relative flex flex-row items-start justify-between gap-4 md:gap-0">
             {/* Connecting line */}
-            <div className="hidden md:block absolute top-8 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-0.5 bg-[#EAD3DD]" />
+            <div className="hidden md:block absolute top-8 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-0.5 bg-[#EAD3DD]" />
 
             {steps.map((step, i) => (
               <div
