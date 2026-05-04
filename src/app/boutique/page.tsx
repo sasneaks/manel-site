@@ -125,7 +125,7 @@ export default function BoutiquePage() {
           Notre Boutique
         </h1>
         <p className="text-lg text-[#1A1A1A]/60 max-w-2xl mx-auto leading-relaxed">
-          Nos bouquets de voiles faits main. Prêts à offrir, ou à garder pour soi.
+          Nos bouquets de voiles en jersey, faits main. Prêts à offrir, ou à garder pour soi.
         </p>
       </section>
 
@@ -218,7 +218,7 @@ export default function BoutiquePage() {
             Envie d&apos;un bouquet sur mesure ?
           </h2>
           <p className="text-[#1A1A1A]/60 mb-8 max-w-md mx-auto leading-relaxed">
-            Choisissez vos couleurs et le nombre de voiles.
+            Choisissez vos couleurs et le nombre de voiles en jersey.
           </p>
           <Link
             href="/personnaliser"

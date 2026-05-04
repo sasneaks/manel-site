@@ -365,12 +365,14 @@ function PersonnaliserContent() {
                     ))}
                   </div>
                   <p className="mt-4 text-xs text-[#1A1A1A]/40">Voile unique : 5€</p>
+                  <p className="mt-2 text-xs text-[#1A1A1A]/50">Matière&nbsp;: jersey doux et confortable.</p>
                 </StepWrapper>
               )}
 
               {/* STEP 2 */}
               {step === 2 && (
                 <StepWrapper title="Choisissez vos couleurs">
+                  <p className="text-xs text-[#1A1A1A]/50 mb-4">Tous nos voiles sont en jersey.</p>
                   {/* Selected slots */}
                   <div className="flex flex-wrap gap-3 mb-2">
                     {Array.from({ length: veilCount }).map((_, i) => {

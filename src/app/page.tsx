@@ -125,7 +125,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Store",
     name: "Manel.k - La maison des voiles",
-    description: "Bouquets de voiles faits main et personnalisables, à petit budget.",
+    description: "Bouquets de voiles en jersey faits main et personnalisables, à petit budget.",
     url: "https://lamaisondesvoiles.fr",
     image: "https://lamaisondesvoiles.fr/opengraph-image.jpg",
     priceRange: "5€ - 50€",
@@ -168,7 +168,7 @@ export default function Home() {
               des voiles
             </h1>
             <p className="mt-4 md:mt-6 text-base sm:text-xl text-[#1A1A1A]/70 max-w-lg mx-auto md:mx-0 leading-relaxed">
-              Des bouquets de voiles faits main pour offrir un cadeau unique, même avec un petit budget.
+              Des bouquets de voiles en jersey, faits main, pour offrir un cadeau unique, même avec un petit budget.
             </p>
             <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
               <Link

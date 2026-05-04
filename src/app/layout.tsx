@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Manel.k \u2013 La maison des voiles",
   },
   description:
-    "Bouquets de voiles faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau qui change des fleurs classiques. Livraison en France.",
+    "Bouquets de voiles en jersey faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau qui change des fleurs classiques. Livraison en France.",
   keywords: [
     "bouquet de voiles",
     "cadeau fait main",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Manel.k \u2013 La maison des voiles",
     description:
-      "Bouquets de voiles faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau unique.",
+      "Bouquets de voiles en jersey faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau unique.",
     siteName: "La Maison des Voiles",
     locale: "fr_FR",
     type: "website",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Manel.k \u2013 La maison des voiles",
     description:
-      "Bouquets de voiles faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau unique.",
+      "Bouquets de voiles en jersey faits main et personnalisables. Choisissez vos couleurs et offrez un cadeau unique.",
   },
   robots: {
     index: true,
